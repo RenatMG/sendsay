@@ -15,6 +15,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="E:\react\sendsay\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1fxZ1UTZSwnKhDcK9LTKIHC73Dl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -37,7 +44,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597161488978</updated>
-      <workItem from="1597161490577" duration="257000" />
+      <workItem from="1597161490577" duration="1042000" />
     </task>
     <servers />
   </component>
