@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {NavLink, Route, Switch} from "react-router-dom";
+
+import './App.scss';
+import AuthForm from "./containers/Auth/Auth";
+import ApiConsole from "./containers/ApiConsole/ApiConsole";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <nav>
+                <NavLink to={'/'}>
+                    auth
+                </NavLink>
+                <NavLink to={'/console'}>
+                    console
+                </NavLink>
+            </nav>
+            <Switch>
+                <Route path='/' exact component={AuthForm}/>
+                <Route path='/console' component={ApiConsole}/>
+            </Switch>
+        </>
+    );
 }
 
 export default App;
