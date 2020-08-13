@@ -44,11 +44,15 @@
   &-form {
     background-color: #fff;
     width: 520px;
-    height: 425px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     margin-top: 20px;
     padding: 40px 30px;
+    max-width: 100%;
+    min-width: 360px;
+    @media screen and (max-width: 575px) {
+      padding: 30px 20px;
+    }
 
     &__title {
       font-style: normal;
@@ -79,6 +83,7 @@
       border-radius: 5px;
       color: #fff;
       border: none;
+      position: relative;
     }
 
 
@@ -88,5 +93,31 @@
       }
     }
 
+  }
+
+  &-error {
+    background-color: $bg-error;
+    padding: 15px 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+
+    &__description {
+      margin-left: 10px;
+    }
+
+    &__head {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+      color: $danger;
+
+    }
+
+    &__body {
+      font-size: 12px;
+      color: $danger;
+      opacity: .5;
+      margin-top: 5px;
+    }
   }
 }

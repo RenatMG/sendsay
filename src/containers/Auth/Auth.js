@@ -12,10 +12,7 @@ const Auth = () => {
                 <div className="auth-decor__item auth-decor__item_circle"/>
                 <div className="auth-decor__item auth-decor__item_parallelogram"/>
             </div>
-            <div className="auth-form">
-                <div className="auth-form__title">API-консолька</div>
-                <AuthForm/>
-            </div>
+            <AuthForm/>
             <div className="auth__link"/>
         </div>
 

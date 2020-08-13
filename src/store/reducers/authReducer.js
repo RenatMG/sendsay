@@ -1,5 +1,7 @@
-const initialState = {
+import {LOGIN_ERROR, LOGIN_START, LOGIN_SUCCESS} from "../actions/actions";
 
+const initialState = {
+    isLogin: false,
     formControls: {
         login: {
             id: 'login',
@@ -17,8 +19,8 @@ const initialState = {
                 login: `Логином может быть как email, так и строка из латинских букв, цифр и подчеркиваний.`
             },
         },
-        subLogin: {
-            id: 'subLogin',
+        sublogin: {
+            id: 'sublogin',
             label: 'Сублогин',
             type: 'text',
             value: '',
@@ -35,7 +37,7 @@ const initialState = {
         password: {
             id: 'password',
             label: 'Пароль',
-            type: 'password',
+            type: 'text',
             value: '',
             valid: true,
             error: false,
@@ -55,6 +57,23 @@ const initialState = {
 
 const authReducer = (state = initialState, {type, payload}) => {
     switch (type) {
+        case LOGIN_START:
+            return {
+                ...state,
+                loading: true
+            }
+        case LOGIN_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: payload.error
+            }
+        case LOGIN_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                isLogin: true
+            }
 
         default:
             return {
