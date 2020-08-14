@@ -1,4 +1,4 @@
-import {LOGIN_ERROR, LOGIN_START, LOGIN_SUCCESS} from "./actions";
+import {LOGIN_ERROR, LOGIN_START, LOGIN_SUCCESS, USER_LOGOUT} from "./actions";
 import Sendsay from 'sendsay-api';
 import Cookies from 'js-cookie'
 
@@ -12,7 +12,15 @@ export function login(formData) {
 
         sendsay.login({...formData})
             .then(() => {
-                dispatch(loginSuccess(sendsay.session))
+                return sendsay.request({action: 'pong'})
+            })
+            .then(({account, sublogin}) => {
+                Cookies.set('sendsay_session', sendsay.session);
+                Cookies.set('sendsay_account', account);
+                if (formData.sublogin) {
+                    Cookies.set('sendsay_sublogin', sublogin);
+                }
+                dispatch(loginSuccess())
             })
             .catch(error => {
                 dispatch(loginError(error))
@@ -24,26 +32,32 @@ export function login(formData) {
     }
 }
 
-function loginStart() {
+function loginStart(autoLogin = false) {
     return {
-        type: LOGIN_START
-    }
-}
-
-function loginError(error) {
-
-    return {
-        type: LOGIN_ERROR,
+        type: LOGIN_START,
         payload: {
-            error
+            loading: autoLogin ? 'autoLoginLoading' : 'loading'
         }
     }
 }
 
-function loginSuccess(session) {
-    Cookies.set('sendsay_session', session);
+function loginError(error, autoLogin = false) {
+    console.log(error)
     return {
-        type: LOGIN_SUCCESS
+        type: LOGIN_ERROR,
+        payload: {
+            error: autoLogin ? null : error,
+            loading: autoLogin ? 'autoLoginLoading' : 'loading'
+        }
+    }
+}
+
+function loginSuccess(autoLogin = false) {
+    return {
+        type: LOGIN_SUCCESS,
+        payload: {
+            loading: autoLogin ? 'autoLoginLoading' : 'loading'
+        }
     }
 }
 
@@ -51,16 +65,29 @@ export function autoLogin() {
     return dispatch => {
         const session = Cookies.get('sendsay_session');
         if (session) {
-            dispatch(loginStart())
+            dispatch(loginStart(true))
             const sendsay = new Sendsay();
             sendsay.setSessionFromCookie();
-            // sendsay.request({action: 'sys.settings.get', list: ['about.id']})
-            sendsay.request({action: 'sys.settings.get'})
+            sendsay.request({action: 'pong'})
                 .then(() => {
-                    dispatch(loginSuccess(sendsay.session))
+                    Cookies.set('sendsay_session', sendsay.session);
+                    dispatch(loginSuccess(true))
+                })
+                .catch(error => {
+                    Cookies.remove('sendsay_session');
+                    dispatch(loginError(error, true))
                 })
         }
 
+    }
+}
+
+export function logOut() {
+    Cookies.remove('sendsay_session');
+    Cookies.remove('sendsay_account');
+    Cookies.remove('sendsay_sublogin');
+    return {
+        type: USER_LOGOUT
     }
 }
 

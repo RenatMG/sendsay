@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {NavLink, Redirect, Route, Switch} from "react-router-dom";
+import React, {Component,} from 'react';
+import {Redirect, Route, Switch} from "react-router-dom";
 
 import './App.scss';
 import AuthForm from "./containers/Auth/Auth";
@@ -8,39 +8,49 @@ import {connect} from "react-redux";
 import {autoLogin} from "./store/actions/authActions";
 
 
-function App({isLogin, autoLogin}) {
+class App extends Component {
 
-    useEffect(() => {
-        if (!isLogin) {
-            autoLogin();
+    componentDidMount() {
+        if (!this.props.isLogin) {
+            this.props.autoLogin()
         }
-    })
+    }
 
-    return (
-        <>
-            <nav>
-                <NavLink to={'/'}>
-                    auth
-                </NavLink>
-                <NavLink to={'/console'}>
-                    console
-                </NavLink>
-            </nav>
-            <Switch>
-                <Route path='/' exact component={AuthForm}/>
-                <Route path='/console' component={ApiConsole}/>
-            </Switch>
-            {
-                isLogin && <Redirect to='/console'/>
-            }
-        </>
-    );
+    render() {
+        const {isLogin, autoLoginLoading} = this.props
+
+        return (
+            <>
+                {
+                    autoLoginLoading
+                        ?
+                        null
+                        :
+                        <>
+                            <Switch>
+                                <Route path='/' exact component={AuthForm}/>
+                                <Route path='/console' component={ApiConsole}/>
+                            </Switch>
+                            {
+                                isLogin
+                                    ?
+                                    <Redirect to='/console'/>
+                                    :
+                                    <Redirect to='/'/>
+                            }
+                        </>
+                }
+
+            </>
+        );
+    }
 }
 
 const mapState = (state) => {
 
     return {
-        isLogin: state.auth.isLogin
+        isLogin: state.auth.isLogin,
+        autoLoginLoading: state.auth.autoLoginLoading
     }
 }
 

@@ -33,27 +33,3 @@ const AuthFormInput = ({control}) => {
 
 export default AuthFormInput;
 
-
-/*
-
- <div className="auth-form__group">
-                <label htmlFor="login">Логин</label>
-                <input type="text" className="auth-form-control form-control" id="login"
-                />
-            </div>
-
-            <div className="auth-form__group">
-                <div className='d-flex justify-content-between'>
-                    <label htmlFor="sub-login">Сублогин</label>
-                    <small id="subLoginHelp" className="auth-form-text form-text text-muted">Опционально</small>
-                </div>
-                <input type="text" className="auth-form-control form-control" id="sub-login"
-                       aria-describedby="subLoginHelp"/>
-            </div>
-
-            <div className="auth-form__group">
-                <label htmlFor="password">Пароль</label>
-                <input type="password" className="form-control" id="password"/>
-            </div>
-
-* */

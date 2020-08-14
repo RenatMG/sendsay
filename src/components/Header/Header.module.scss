@@ -1,0 +1,9 @@
+@import "../../scss/colors";
+.header {
+  height: 50px;
+  background-color: $bg-console;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  justify-content: space-between;
+}

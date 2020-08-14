@@ -4,7 +4,9 @@ import AuthFormInput from "./AuthFormInput";
 import {validator} from "../../handlers/formHandlers";
 import {login} from "../../store/actions/authActions";
 import AuthFormError from "./AuthFormError";
-import Loader from "../../components/Loader/Loader";
+import Button from "../../components/Button/Button";
+import Title from "../../components/Title/Title";
+
 
 class AuthForm extends Component {
 
@@ -58,7 +60,7 @@ class AuthForm extends Component {
 
         return (
             <div className="auth-form">
-                <div className="auth-form__title">API-консолька</div>
+                <Title size='lg'>API-консолька</Title>
                 {
                     error && <AuthFormError error={error}/>
                 }
@@ -71,18 +73,7 @@ class AuthForm extends Component {
                             )
                         })
                     }
-                    {
-
-                    }
-                    <button type="submit" className="auth-form__btn">
-                        {
-                            !!loading
-                                ?
-                                <Loader/>
-                                :
-                                'Войти'
-                        }
-                    </button>
+                   <Button title='Войти' loading={loading}/>
 
                 </form>
             </div>

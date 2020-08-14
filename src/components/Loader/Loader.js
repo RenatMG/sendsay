@@ -1,9 +1,9 @@
 import React from 'react';
-import './Loader.scss'
+import classes from './Loader.module.scss'
 
 const Loader = () => {
     return (
-        <div className='loader'>
+        <div className={classes.loader}>
             <svg
                  width="28px" height="28px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                 <g transform="rotate(0 50 50)">

@@ -1,9 +1,16 @@
 import React from 'react';
+import './ApiConsole.scss'
+import ApiConsoleHeader from "./ApiConsoleHeader";
+import Divider from "../../components/Divider/Divider";
+import ApiConsoleHistory from "./ApiConsoleHistory";
 
 const ApiConsole = () => {
     return (
         <div>
-            <h1>CONSOLE</h1>
+            <ApiConsoleHeader/>
+            <Divider/>
+            <ApiConsoleHistory/>
+            <Divider/>
         </div>
     );
 };

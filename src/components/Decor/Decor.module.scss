@@ -1,0 +1,30 @@
+.decor {
+  display: flex;
+  justify-content: center;
+
+  >div {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background: rgba(0, 0, 0, 0.2);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .circle {
+    border-radius: 50%;
+  }
+
+  .rectangle {
+    width: 15px;
+  }
+
+  .parallelogram {
+    width: 15px;
+    transform: skew(-20deg);
+  }
+}
+
+

@@ -2,22 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fe8da25-c4d3-4140-938c-8cf49abdde12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Loader/Loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Loader/Loader.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Auth/AuthFormError.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rest/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Account/Account.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Account/Account.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Decor/Decor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Decor/Decor.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Divider/Divider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Divider/Divider.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Header/Header.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LogOut/LogOut.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LogOut/LogOut.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Resize/Resize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Resize/Resize.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Title/Title.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Title/Title.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/ApiConsole/ApiConsole.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/ApiConsole/ApiConsoleHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/ApiConsole/ApiConsoleHistory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scss/_sizes.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Loader/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loader/Loader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Loader/Loader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loader/Loader.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ApiConsole/ApiConsole.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ApiConsole/ApiConsole.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/Auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Auth/Auth.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/Auth.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Auth/AuthForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/AuthForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Auth/AuthFormError.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/AuthFormError.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Auth/AuthFormInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/AuthFormInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scss/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/_colors.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/authReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +104,8 @@
       <workItem from="1597161490577" duration="6703000" />
       <workItem from="1597169828747" duration="19787000" />
       <workItem from="1597260673824" duration="10284000" />
-      <workItem from="1597318315250" duration="14499000" />
+      <workItem from="1597318315250" duration="18613000" />
+      <workItem from="1597401146080" duration="13307000" />
     </task>
     <task id="LOCAL-00001" summary="AuthForm validation">
       <created>1597222345399</created>
@@ -93,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597222345400</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="AuthForm form login done">
+      <created>1597334010503</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597334010503</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,7 +129,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="AuthForm validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="AuthForm validation" />
+    <MESSAGE value="AuthForm form login done" />
+    <option name="LAST_COMMIT_MESSAGE" value="AuthForm form login done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2642" y="436" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597167636109">
@@ -112,17 +141,17 @@
       <screen x="1920" y="126" width="1920" height="1040" />
     </state>
     <state x="2610" y="393" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.126.1920.1040@1920.126.1920.1040" timestamp="1597163275491" />
-    <state x="2493" y="154" key="CommitChangelistDialog2" timestamp="1597222343017">
+    <state x="2163" y="154" key="CommitChangelistDialog2" timestamp="1597334008220">
       <screen x="1920" y="126" width="1920" height="1040" />
     </state>
-    <state x="2493" y="154" key="CommitChangelistDialog2/0.0.1920.1040/1920.126.1920.1040@1920.126.1920.1040" timestamp="1597222343017" />
+    <state x="2163" y="154" key="CommitChangelistDialog2/0.0.1920.1040/1920.126.1920.1040@1920.126.1920.1040" timestamp="1597334008220" />
     <state x="2381" y="288" key="SettingsEditor" timestamp="1597170570948">
       <screen x="1920" y="126" width="1920" height="1040" />
     </state>
     <state x="2381" y="288" key="SettingsEditor/0.0.1920.1040/1920.126.1920.1040@1920.126.1920.1040" timestamp="1597170570948" />
-    <state x="2472" y="375" key="Vcs.Push.Dialog.v2" timestamp="1597222352015">
+    <state x="2472" y="375" key="Vcs.Push.Dialog.v2" timestamp="1597334012998">
       <screen x="1920" y="126" width="1920" height="1040" />
     </state>
-    <state x="2472" y="375" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.126.1920.1040@1920.126.1920.1040" timestamp="1597222352015" />
+    <state x="2472" y="375" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.126.1920.1040@1920.126.1920.1040" timestamp="1597334012998" />
   </component>
 </project>

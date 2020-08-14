@@ -1,0 +1,22 @@
+.logout {
+  margin-left: 30px;
+  cursor: pointer;
+
+  svg {
+    margin-left: 10px;
+    width: 34px;
+    height: 24px;
+
+    g {
+      transition: .2s ease-in;
+    }
+  }
+
+  &:hover {
+    svg {
+      g:last-child {
+        transform: translateX(4px);
+      }
+    }
+  }
+}

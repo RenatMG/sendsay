@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AuthFormError = ({error}) => {
-    const {id, explain} = error
+    const {id, explain} = error;
 
     return (
         <div className='auth-error'>
