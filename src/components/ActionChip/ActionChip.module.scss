@@ -1,11 +1,53 @@
 .actionChip {
   display: flex;
-  align-items: center;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  height: 100px;
+  flex-direction: column;
+
   width: 30px;
+  min-height: 90px; // проверить
+  box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   background-color: #fff;
-  padding: 5px 10px;
-  margin-right: 10px;
+  padding: 10px 5px 5px;
+  margin: 0 auto 10px;
+  transition: .2s ease-in;
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: -1px 0px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &__status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+  }
+
+  &__title{
+    writing-mode: tb-rl;
+    margin: 5px 0 2px;
+    display: flex;
+    align-items: center;
+    transform: translateX(1px);
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //cursor: pointer;
+
+    svg {
+      fill: rgba(0, 0, 0, .2);
+      transform: rotate(90deg);
+      transition: .2s ease-in;
+    }
+
+    &:hover {
+      svg {
+        fill: #999999;
+      }
+    }
+  }
 }

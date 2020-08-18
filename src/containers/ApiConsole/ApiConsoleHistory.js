@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "../../components/Header/Header";
 import ActionChip from "../../components/ActionChip/ActionChip";
 import Scroll from "../../components/Scroll/Scroll";
+import ClearHistory from "../../components/ClearHistory/ClearHistory";
 
 
 const ApiConsoleHistory = () => {
@@ -66,11 +67,54 @@ const ApiConsoleHistory = () => {
             id: 12342,
             title: 'track.ddget',
             status: 1
-        }, {
-            id: 167867834,
+        },
+        {
+            id: 16786363667834,
             title: 'trasck.get',
             status: 1
         },
+        {
+            id: 1678363667834,
+            title: 'trasck.get',
+            status: 1
+        },
+        {
+            id: 1673636867834,
+            title: 'trasck.get',
+            status: 1
+        },
+        {
+            id: 16783636367834,
+            title: 'trasck.get',
+            status: 1
+        },
+        {
+            id: 1678636363834,
+            title: 'trasck.get.sdf',
+            status: 1
+        },
+        {
+            id: 16766336867834,
+            title: 'tradfdfsck.get',
+            status: 1
+        },
+        {
+            id: 167864547834,
+            title: 'tradfdfsck.get',
+            status: 1
+        },
+        {
+            id: 167864554547834,
+            title: 'tradfdsck.get',
+            status: 1
+        },
+        {
+            id: 167855467834,
+            title: 'trasdfdck.get',
+            status: 1
+        },
+
+
     ]
 
     return (
@@ -84,6 +128,7 @@ const ApiConsoleHistory = () => {
                     })
                 }
             </Scroll>
+            <ClearHistory/>
         </Header>
     );
 };
