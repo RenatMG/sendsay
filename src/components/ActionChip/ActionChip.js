@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './ActionChip.module.scss'
-import ActionMenu from "../ActionMenu/ActionMenu";
-import ActionStatus from "../ActionStatus/ActionStatus";
+// import ActionMenu from "../ActionMenu/ActionMenu";
+// import ActionStatus from "../ActionStatus/ActionStatus";
+import Menu from "../../svg/Menu";
 
 const ActionChip = ({action: {title, status = 'success'}}) => {
 
@@ -10,11 +11,7 @@ const ActionChip = ({action: {title, status = 'success'}}) => {
             <div className={`${classes.actionChip__status} ${status === 1 ? 'success' : 'danger'}`}/>
             <div className={classes.actionChip__title}>{title}</div>
             <div className={classes.actionChip__menu}>
-                <svg width="4" height="18" viewBox="0 0 4 18">
-                    <circle cx="2" cy="2" r="2"/>
-                    <circle cx="2" cy="9" r="2"/>
-                    <circle cx="2" cy="16" r="2"/>
-                </svg>
+               <Menu/>
             </div>
         </div>
     );

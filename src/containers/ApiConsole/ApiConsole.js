@@ -7,7 +7,7 @@ import ApiConsolePanels from "./ApiConsolePanels";
 
 const ApiConsole = () => {
     return (
-        <div>
+        <div className='api-console'>
             <ApiConsoleHeader/>
             <Divider/>
             <ApiConsoleHistory/>
