@@ -1,7 +1,7 @@
 .actionChip {
   display: flex;
   flex-direction: column;
-
+  position: relative;
   width: 30px;
   min-height: 90px; // проверить
   box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.1);
@@ -11,8 +11,9 @@
   margin: 0 auto 10px;
   transition: .2s ease-in;
   cursor: pointer;
+  pointer-events: visible;
 
-  &:hover{
+  &:hover {
     box-shadow: -1px 0px 4px rgba(0, 0, 0, 0.25);
   }
 
@@ -24,7 +25,7 @@
     margin: 0 auto;
   }
 
-  &__title{
+  &__title {
     writing-mode: tb-rl;
     margin: 5px 0 2px;
     display: flex;
