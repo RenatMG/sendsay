@@ -5,15 +5,21 @@
   position: fixed;
   z-index: 1;
   height: 141px;
-  padding: 5px 0;
+
   display: none;
 
   .item {
-    text-align: left;
+
+    padding: 5px 0;  text-align: left;
     padding: 0 10%;
     height: 40px;
     display: flex;
     align-items: center;
   }
 
+  .primary {
+    &:hover {
+      background: blue;
+    }
+  }
 }
