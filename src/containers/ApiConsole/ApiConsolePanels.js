@@ -2,6 +2,7 @@ import React from 'react';
 import Panel from "../../components/Panel/Panel";
 import Button from "../../components/Button/Button";
 import DragResizer from "../../components/DragResizer/DragResizer";
+import Divider from "../../components/Divider/Divider";
 
 
 const ApiConsolePanels = () => {
@@ -20,6 +21,7 @@ const ApiConsolePanels = () => {
                 <DragResizer/>
                 <Panel title='Ответ' id={'response'}/>
             </div>
+            <Divider marginY={15} marginX={-15}/>
             <Button title='Отправить'/>
         </form>
     );

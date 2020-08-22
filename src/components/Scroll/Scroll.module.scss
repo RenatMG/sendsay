@@ -4,17 +4,16 @@
   top: 0;
   left: 0;
   width: 50px;
-  max-height: calc(100vw - 65px);
+  max-height: calc(100vw - 70px);
   margin: 0;
   overflow-y: scroll;
-  //overflow-x: hidden;
+  overflow-x: hidden;
   transform: rotate(-90deg) translateY(-30px);
   transform-origin: right top;
-  cursor: default;
   padding-bottom: 50px;
+  z-index: 1;
 
   &::-webkit-scrollbar {
     display: none;
   }
-
 }

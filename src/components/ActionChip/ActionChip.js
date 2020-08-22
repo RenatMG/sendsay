@@ -25,6 +25,7 @@ class ActionChip extends Component {
 
         this.setParamsHandler()
         chip.parentElement.addEventListener('scroll', (evt) => {
+            // console.log('scroll')
             this.setParamsHandler()
         });
 

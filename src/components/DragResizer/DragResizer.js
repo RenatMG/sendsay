@@ -16,6 +16,7 @@ const DragResizer = () => {
         const panelsContainer = parent.parentElement;
 
 
+
         function initDrag(e) {
             startX = e.clientX;
             startWidth = parseInt(document.defaultView.getComputedStyle(leftPanel).width, 10);

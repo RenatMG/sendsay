@@ -5,6 +5,7 @@ import Scroll from "../../components/Scroll/Scroll";
 import ClearHistory from "../../components/ClearHistory/ClearHistory";
 import DropDownMenu from "../../components/DropDownMenu/DropDownMenu";
 import Overlay from "../../components/Overlay/Overlay";
+import {CSSTransition} from 'react-transition-group';
 
 
 class ApiConsoleHistory extends Component {
@@ -126,7 +127,8 @@ class ApiConsoleHistory extends Component {
 
     menuParamsHandler = (menuParams) => {
         this.setState(prevState => {
-            let scroll = !prevState.scroll
+            // let scroll = prevState.menuParams.left === menuParams.left && !prevState.scroll
+            let scroll = prevState.menuParams.left === menuParams.left && !prevState.scroll
             return {
                 scroll,
                 menuParams
@@ -162,7 +164,9 @@ class ApiConsoleHistory extends Component {
                         })
                     }
                 </Scroll>
-                <DropDownMenu {...menuParams} scroll={scroll}/>
+
+                    <DropDownMenu {...menuParams} scroll={scroll}/>
+
                 <ClearHistory/>
                 <Overlay scroll={scroll} scrollHandler={this.scrollHandler}/>
             </Header>

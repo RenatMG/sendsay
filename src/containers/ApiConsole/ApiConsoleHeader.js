@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Decor from "../../components/Decor/Decor";
 import LogOut from "../../components/LogOut/LogOut";
 import Account from "../../components/Account/Account";
@@ -11,11 +11,6 @@ import Title from "../../components/Title/Title";
 const ApiConsoleHeader = ({logOut}) => {
 
 
-    const resize = () => {
-        console.log('resize')
-    }
-
-
     return (
         <Header>
             <div className='d-flex align-items-center'>
@@ -25,7 +20,7 @@ const ApiConsoleHeader = ({logOut}) => {
             <div className='d-flex align-items-center'>
                 <Account/>
                 <LogOut onClick={logOut}/>
-                <Resize onClick={resize}/>
+                <Resize/>
             </div>
         </Header>
     );
