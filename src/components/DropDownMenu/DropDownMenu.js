@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import classes from './DropDownMenu.module.scss';
 import Divider from "../Divider/Divider";
-import {CSSTransition, Transition} from "react-transition-group";
+import {Transition} from "react-transition-group";
 
-const DropDownMenu = ({top = 0, left = 0, right, width = 0, scroll}) => {
+const DropDownMenu = ({id, top = 0, left = 0, right, width = 0, scroll = false}) => {
 
     const [leftOffset, setLeftOffset] = useState(left)
+    const [chipId, setChipId] = useState(id)
 
-    const scrollActions = (el, top) => {
+
+    const scrollActions = (el, left) => {
         el.scrollTo({
-            top,
+            left,
             behavior: "smooth"
         });
     }
@@ -19,19 +21,14 @@ const DropDownMenu = ({top = 0, left = 0, right, width = 0, scroll}) => {
         const actions = document.getElementById('scrollActions')
 
         if (width + left > window.innerWidth - 50) {
-            scrollActions(actions, actions.scrollTop + width)
             setLeftOffset(left - width - (133 - width) + 1)
-            //последний элемент глючит, поправить
-
         } else if (left < 25) {
-            let offset = actions.scrollTop + left - 20
+            let offset = actions.scrollLeft + left - 20
             scrollActions(actions, offset)
             setLeftOffset(20)
         } else {
             setLeftOffset(left - (133 - width))
         }
-
-
 
     }, [left, right, width])
 
@@ -40,7 +37,6 @@ const DropDownMenu = ({top = 0, left = 0, right, width = 0, scroll}) => {
         <Transition in={!scroll} timeout={300} >
             {
                 state => {
-                    console.log(state)
                     return (
                         <div id='dropMenu' className={`${classes.menu} dropDownMenu_${state}`}
                              style={{top: top + 30, left: leftOffset}}>

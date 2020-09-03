@@ -1,20 +1,19 @@
 .actionChip {
   display: flex;
-  flex-direction: column;
   position: relative;
-  width: 30px;
-  min-height: 90px; // проверить
+  align-items: center;
+  height: 30px;
   box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background-color: #fff;
-  padding: 10px 5px 5px;
-  margin: 0 auto 10px;
+  margin: auto 5px;
+  padding: 0;
   transition: .2s ease-in;
   cursor: pointer;
   pointer-events: visible;
 
   &:hover {
-    box-shadow: -1px 0px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   }
 
   &__status {
@@ -22,12 +21,10 @@
     height: 10px;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    margin: 0 auto;
+    margin: 0 5px 0 10px;
   }
 
   &__title {
-    writing-mode: tb-rl;
-    margin: 5px 0 2px;
     display: flex;
     align-items: center;
     transform: translateX(1px);
@@ -38,11 +35,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    //cursor: pointer;
+    width: 28px;
+    height: 28px;
 
     svg {
       fill: rgba(0, 0, 0, .2);
-      transform: rotate(90deg);
       transition: .2s ease-in;
     }
 
@@ -51,5 +48,11 @@
         fill: #999999;
       }
     }
+  }
+
+  &__click{
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 }

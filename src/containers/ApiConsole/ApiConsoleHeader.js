@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Decor from "../../components/Decor/Decor";
 import LogOut from "../../components/LogOut/LogOut";
 import Account from "../../components/Account/Account";

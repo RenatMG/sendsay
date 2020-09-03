@@ -1,19 +1,15 @@
 .scroll {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  width: 50px;
-  max-height: calc(100vw - 70px);
-  margin: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  transform: rotate(-90deg) translateY(-30px);
-  transform-origin: right top;
-  padding-bottom: 50px;
+  display: flex;
+  height: 100%;
+  position: relative;
+  overflow-x: scroll;
+  padding: 0 70px 0 0;
+  max-width: calc(100vw - 68px);
   z-index: 1;
-
   &::-webkit-scrollbar {
     display: none;
   }
+}
+.plug{
+  min-width: 40px;
 }

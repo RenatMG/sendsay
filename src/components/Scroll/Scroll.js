@@ -1,56 +1,64 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import classes from './Scroll.module.scss'
 
-const Scroll = ({children, scroll = true, drag = true}) => {
+class Scroll extends React.Component {
 
-    useEffect(() => {
-        const scrollActions = document.getElementById('scrollActions')
-        if (scroll && drag) {
-            scrollActions.addEventListener('mousedown', initDrag, false);
-        }
-        let startX;
 
-        function initDrag(e) {
-            if (e.target.id === 'scrollActions') {
-                startX = e.clientX;
-                document.documentElement.addEventListener('mousemove', doDrag, false);
-                document.documentElement.addEventListener('mouseup', stopDrag, false);
+    initScroll = () => {
+        const scrollActions = this.scrollRef.current
+        scrollActions.addEventListener('wheel', this.doScroll);
+        scrollActions.addEventListener('mouseleave', this.stopScroll);
+    }
+
+    doScroll = (e) => {
+        if (this.props.scroll) {
+            const scrollActions = this.scrollRef.current
+            let delta = e.deltaY || e.detail || e.wheelDelta;
+            let step = delta > 0 ? 40 : -40
+
+            if (scrollActions.scrollLeft + step < 0) {
+                scrollActions.scrollLeft = 0
+            } else {
+                scrollActions.scrollLeft = scrollActions.scrollLeft + step;
             }
         }
+    }
 
+    stopScroll = () => {
+        const scrollActions = this.scrollRef.current
+        scrollActions.removeEventListener('wheel', this.doScroll, false);
+    }
 
-        function doDrag(e) {
-            let step = e.clientX > startX ? -(e.clientX - startX) : (startX - e.clientX);
-            scrollActions.scrollTop = scrollActions.scrollTop + step;
-            startX = e.clientX;
+    componentDidMount() {
+        const scrollActions = this.scrollRef.current
+        if (this.props.scroll) {
+            scrollActions.addEventListener('mouseenter', this.initScroll);
         }
+    }
 
-        function stopDrag() {
-            document.documentElement.removeEventListener('mousemove', doDrag, false);
-            document.documentElement.removeEventListener('mouseup', stopDrag, false);
-        }
+    scrollRef = React.createRef()
 
-        return () => {
-            scrollActions.removeEventListener('mousedown', initDrag, false);
-        }
+    render() {
+        const {children, drag, scroll} = this.props
+        const cls = [classes.scroll]
+        cls.push(drag ? classes.scroll : '');
+
+        return (
+
+            <div id='scrollActions'
+                 ref={this.scrollRef}
+                 className={cls.join(' ')}
+                 style={{pointerEvents: scroll ? 'auto' : 'none'}}>
+                {children}
+                <div className={classes.plug}/>
+            </div>
+
+        );
+    }
 
 
-    }, [scroll])
-
-    const cls = [classes.scroll]
-    cls.push(scroll ? 'drag' : '');
-    return (
-
-        <div id='scrollActions'
-             className={cls.join(' ')}
-            // className={classes.scroll}
-
-             style={{pointerEvents: scroll ? 'auto' : 'none'}}>
-            {children}
-        </div>
-
-    );
 };
 
 export default Scroll;
+
 
