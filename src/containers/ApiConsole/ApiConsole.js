@@ -1,20 +1,61 @@
-import React from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import './ApiConsole.scss'
 import ApiConsoleHeader from "./ApiConsoleHeader";
 import Divider from "../../components/Divider/Divider";
 import ApiConsoleHistory from "./ApiConsoleHistory";
 import ApiConsolePanels from "./ApiConsolePanels";
+import {connect} from "react-redux";
+import {ApiConsoleProvider} from "./ApiConsoleContext";
 
-const ApiConsole = () => {
+const ApiConsole = ({actions}) => {
+
+    const [currentActionId, setCurrentActionId] = useState(null);
+    // текущий action
+    const [action, setAction] = useState({});
+    // колбэк для определения текщего action
+    const getAction = useCallback(() => {
+        if (currentActionId) {
+            return actions.find(action => action.id === +currentActionId)
+        }
+        return {}
+    }, [currentActionId, actions]);
+
+
+    useEffect(() => {
+
+        let currentAction = getAction();
+        if (currentAction) {
+            setAction(currentAction)
+        }
+    }, [getAction]);
+
+
+    useEffect(() => {
+        if (actions[0]) {
+            setCurrentActionId(actions[0].id)
+        }
+    }, [actions]);
+
+    // console.log(currentActionId)
+
     return (
-        <div className='api-console'>
-            <ApiConsoleHeader/>
-            <Divider/>
-            <ApiConsoleHistory/>
-            <Divider/>
-            <ApiConsolePanels/>
-        </div>
+        <ApiConsoleProvider>
+            <div className='api-console'>
+                <ApiConsoleHeader/>
+                <Divider/>
+                <ApiConsoleHistory setCurrentActionId={setCurrentActionId}/>
+                <Divider/>
+                <ApiConsolePanels action={action}
+                />
+            </div>
+        </ApiConsoleProvider>
     );
 };
 
-export default ApiConsole;
+const mapState = (state) => {
+    return {
+        actions: state.apiConsole.actions,
+    }
+}
+
+export default connect(mapState)(ApiConsole);

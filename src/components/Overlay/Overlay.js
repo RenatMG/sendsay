@@ -1,9 +1,11 @@
 import React from 'react';
 import classes from './Overlay.module.scss'
+import {useConsole} from "../../containers/ApiConsole/ApiConsoleContext";
 
-const Overlay = ({scroll, scrollHandler}) => {
+const Overlay = () => {
+    const {scroll, setScroll} = useConsole();
     return (
-        <div className={classes.overlay} onClick={scrollHandler} style={{display: scroll ? 'none' : 'block'}}/>
+        <div className={classes.overlay} onClick={() => setScroll(true)} style={{display: scroll ? 'none' : 'block'}}/>
     );
 };
 

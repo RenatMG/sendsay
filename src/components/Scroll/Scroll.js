@@ -3,7 +3,6 @@ import classes from './Scroll.module.scss'
 
 class Scroll extends React.Component {
 
-
     initScroll = () => {
         const scrollActions = this.scrollRef.current
         scrollActions.addEventListener('wheel', this.doScroll);
@@ -39,24 +38,18 @@ class Scroll extends React.Component {
     scrollRef = React.createRef()
 
     render() {
-        const {children, drag, scroll} = this.props
-        const cls = [classes.scroll]
-        cls.push(drag ? classes.scroll : '');
+        const {children, scroll} = this.props
 
         return (
-
             <div id='scrollActions'
                  ref={this.scrollRef}
-                 className={cls.join(' ')}
+                 className={classes.scroll}
                  style={{pointerEvents: scroll ? 'auto' : 'none'}}>
                 {children}
                 <div className={classes.plug}/>
             </div>
-
         );
     }
-
-
 };
 
 export default Scroll;

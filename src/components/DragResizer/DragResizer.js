@@ -4,18 +4,19 @@ import Menu from "../../svg/Menu";
 
 const DragResizer = () => {
 
+    const dragResizerRef = React.useRef();
 
     useEffect(() => {
-        const dragResizer = document.getElementById('dragResizer');
-        dragResizer.addEventListener('mousedown', initDrag, false);
 
         let startX, parentWidth, startWidth, panelsContainerWidth;
+        const dragResizer = dragResizerRef.current
+
+        dragResizer.addEventListener('mousedown', initDrag, false);
+
         const parent = dragResizer.parentElement;
         const leftPanel = parent.previousElementSibling;
         const rightPanel = parent.nextElementSibling;
         const panelsContainer = parent.parentElement;
-
-
 
         function initDrag(e) {
             startX = e.clientX;
@@ -44,8 +45,8 @@ const DragResizer = () => {
     });
 
     return (
-        <div className={classes.dragResizer}>
-            <div id='dragResizer' className='w-100 d-flex justify-content-center'>
+        <div className={classes.dragResizer} >
+            <div id='dragResizer' ref={dragResizerRef}>
                 <Menu/>
             </div>
         </div>
