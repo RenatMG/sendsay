@@ -29,7 +29,6 @@ export function sendRequest(value) {
                     })
             }
         } catch (error) {
-            console.log(error)
             const {name, message} = error
             dispatch(sendRequestError({name, message}))
         }
@@ -56,7 +55,7 @@ function sendRequestSuccess(id, request, response, error = false) {
     }
 }
 
-function sendRequestError(error) {
+export function sendRequestError(error) {
     return {
         type: SEND_REQUEST_ERROR,
         payload: {
@@ -65,9 +64,4 @@ function sendRequestError(error) {
     }
 }
 
-export function clearErrors() {
-    return {
-        type: CLEAR_ERRORS
-    }
-}
 

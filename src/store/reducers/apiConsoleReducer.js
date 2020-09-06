@@ -74,8 +74,6 @@ const apiConsoleReducer = (state = initialState, {type, payload}) => {
                 loading: false,
                 error: payload.error
             }
-
-
         default:
             return {
                 ...state

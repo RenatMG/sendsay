@@ -2,6 +2,7 @@ import React, {useCallback, useContext, useEffect, useRef, useState} from 'react
 import classes from './ActionChip.module.scss'
 import Menu from "../../svg/Menu";
 import {useConsole} from "../../containers/ApiConsole/ApiConsoleContext";
+import Copy from "../Copy/Copy";
 
 
 const ActionChip = ({action, setCurrentActionId}) => {
@@ -42,6 +43,8 @@ const ActionChip = ({action, setCurrentActionId}) => {
 
 
     const setMenuParams = () => {
+        const chip = chipRef.current;
+        setCurrentActionId(chip.id);
         menuParamsHandler(setParamsHandler());
     };
 
@@ -61,7 +64,10 @@ const ActionChip = ({action, setCurrentActionId}) => {
             <div ref={chipRef} id={id} className={classes.actionChip}>
                 <div className={classes.actionChip__click} onClick={chipHandler}>
                     <div className={`${classes.actionChip__status} ${error ? 'danger' : 'success'}`}/>
-                    <div className={classes.actionChip__title}>{request.action}</div>
+                    <div className={classes.actionChip__title}>{request.action}
+                        <Copy/>
+                    </div>
+
                 </div>
                 <div className={classes.actionChip__menu} onClick={setMenuParams}>
                     <Menu/>

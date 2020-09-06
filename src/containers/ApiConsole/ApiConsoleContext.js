@@ -27,6 +27,7 @@ export const ApiConsoleProvider = connect(mapState, actions)(props => {
 
     const [scroll, setScroll] = useState(true);
     const [menuParams, setMenuParams] = useState({});
+    const [copy, doCopy] = useState(false);
 
     const menuParamsHandler = (params) => {
         setScroll(menuParams.left === params.left && !scroll);// если то же чип - toggle
@@ -44,7 +45,9 @@ export const ApiConsoleProvider = connect(mapState, actions)(props => {
             scroll,
             setScroll,
             menuParamsHandler,
-            menuParams
+            menuParams,
+            copy,
+            doCopy
         }}>
             {children}
         </ApiConsoleContext.Provider>

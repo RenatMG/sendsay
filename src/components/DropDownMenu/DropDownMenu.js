@@ -3,15 +3,19 @@ import classes from './DropDownMenu.module.scss';
 import Divider from "../Divider/Divider";
 import {Transition} from "react-transition-group";
 import {useConsole} from "../../containers/ApiConsole/ApiConsoleContext";
+import {CopyToClipboard} from "react-copy-to-clipboard";
 
-const DropDownMenu = () => {
+const DropDownMenu = ({action}) => {
 
-    const {menuParams, scroll} = useConsole();
+    const {sendRequest} = useConsole();
+
+    const {menuParams, scroll, doCopy} = useConsole();
     let {id, top, left, width} = menuParams
 
     const [leftOffset, setLeftOffset] = useState(left)
     const [chipId, setChipId] = useState(id)
     const [open, setOpen] = useState(!scroll)
+    const [copy, setCopy] = useState(false)
 
 
     const scrollActions = (el, left) => {
@@ -59,6 +63,15 @@ const DropDownMenu = () => {
         left: leftOffset || 0
     }
 
+    const actionDoHandler = () => {
+        console.log(action.request)
+        sendRequest(JSON.stringify(action.request))
+    };
+
+    const actionCopyHandler = () => {
+        doCopy()
+    }
+
 
     return (
         <Transition in={open} timeout={200}>
@@ -68,8 +81,13 @@ const DropDownMenu = () => {
                         <div id='dropMenu' className={`${classes.menu} dropDownMenu_${state}`}
                              style={styles}>
                             <div className='d-flex flex-column'>
-                                <div className={classes.item + ' ' + classes.primary}>Выполнить</div>
-                                <div className={classes.item + ' ' + classes.primary}>Скопировать</div>
+                                <div className={classes.item + ' ' + classes.primary}
+                                     onClick={actionDoHandler}>Выполнить
+                                </div>
+                                <CopyToClipboard text={JSON.stringify(action.request)}
+                                                 onCopy={() => actionCopyHandler}>
+                                    <div className={classes.item + ' ' + classes.primary}>Скопировать</div>
+                                </CopyToClipboard>
                                 <Divider marginY={5}/>
                                 <div className={classes.item + ' ' + classes.danger}>Удалить</div>
                             </div>

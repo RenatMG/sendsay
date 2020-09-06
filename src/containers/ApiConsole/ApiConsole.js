@@ -6,8 +6,9 @@ import ApiConsoleHistory from "./ApiConsoleHistory";
 import ApiConsolePanels from "./ApiConsolePanels";
 import {connect} from "react-redux";
 import {ApiConsoleProvider} from "./ApiConsoleContext";
+import {sendRequestError} from "../../store/actions/apiConsoleActions";
 
-const ApiConsole = ({actions}) => {
+const ApiConsole = ({actions, sendRequestError}) => {
 
     const [currentActionId, setCurrentActionId] = useState(null);
     // текущий action
@@ -15,6 +16,7 @@ const ApiConsole = ({actions}) => {
     // колбэк для определения текщего action
     const getAction = useCallback(() => {
         if (currentActionId) {
+            sendRequestError(null);
             return actions.find(action => action.id === +currentActionId)
         }
         return {}
@@ -43,7 +45,7 @@ const ApiConsole = ({actions}) => {
             <div className='api-console'>
                 <ApiConsoleHeader/>
                 <Divider/>
-                <ApiConsoleHistory setCurrentActionId={setCurrentActionId}/>
+                <ApiConsoleHistory setCurrentActionId={setCurrentActionId} action={action}/>
                 <Divider/>
                 <ApiConsolePanels action={action}
                 />
@@ -57,5 +59,8 @@ const mapState = (state) => {
         actions: state.apiConsole.actions,
     }
 }
+const actions ={
+    sendRequestError
+}
 
-export default connect(mapState)(ApiConsole);
+export default connect(mapState, actions)(ApiConsole);

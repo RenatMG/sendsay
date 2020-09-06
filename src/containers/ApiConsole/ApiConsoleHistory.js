@@ -8,7 +8,7 @@ import Overlay from "../../components/Overlay/Overlay";
 import {useConsole} from "./ApiConsoleContext";
 
 
-const ApiConsoleHistory = ({setCurrentActionId}) => {
+const ApiConsoleHistory = ({setCurrentActionId, action}) => {
 
     const {actions, scroll} = useConsole();
 
@@ -28,7 +28,7 @@ const ApiConsoleHistory = ({setCurrentActionId}) => {
                 }
 
             </Scroll>
-            <DropDownMenu/>
+            <DropDownMenu action={action}/>
             <ClearHistory/>
             <Overlay/>
         </Header>
