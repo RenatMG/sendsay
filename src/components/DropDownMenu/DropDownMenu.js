@@ -9,14 +9,12 @@ const DropDownMenu = ({action}) => {
 
     const {sendRequest} = useConsole();
 
-    const {menuParams, scroll, doCopy} = useConsole();
+    const {menuParams, scroll, copy, doCopy} = useConsole();
     let {id, top, left, width} = menuParams
 
     const [leftOffset, setLeftOffset] = useState(left)
     const [chipId, setChipId] = useState(id)
     const [open, setOpen] = useState(!scroll)
-    const [copy, setCopy] = useState(false)
-
 
     const scrollActions = (el, left) => {
         el.scrollTo({
@@ -69,9 +67,12 @@ const DropDownMenu = ({action}) => {
     };
 
     const actionCopyHandler = () => {
-        doCopy()
-    }
-
+        doCopy(true)
+        // setTimeout(() => {
+        //     doCopy(false)
+        // }, 3000)
+    // console.log(copy)
+    };
 
     return (
         <Transition in={open} timeout={200}>
@@ -85,7 +86,7 @@ const DropDownMenu = ({action}) => {
                                      onClick={actionDoHandler}>Выполнить
                                 </div>
                                 <CopyToClipboard text={JSON.stringify(action.request)}
-                                                 onCopy={() => actionCopyHandler}>
+                                                 onCopy={() => actionCopyHandler()}>
                                     <div className={classes.item + ' ' + classes.primary}>Скопировать</div>
                                 </CopyToClipboard>
                                 <Divider marginY={5}/>

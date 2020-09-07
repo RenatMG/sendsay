@@ -7,7 +7,7 @@ const Copy = ({open =true}) => {
         <Transition in={open} timeout={200}>
             {
                 state => {
-                    console.log(state)
+                     console.log(state)
                    return(
                        <div className={`${classes.Copy} ${state}`}>Скопировано</div>
                    )

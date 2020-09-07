@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Panel from "../../components/Panel/Panel";
 import Button from "../../components/Button/Button";
 import DragResizer from "../../components/DragResizer/DragResizer";

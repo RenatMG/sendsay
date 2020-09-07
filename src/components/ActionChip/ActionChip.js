@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from './ActionChip.module.scss'
 import Menu from "../../svg/Menu";
 import {useConsole} from "../../containers/ApiConsole/ApiConsoleContext";
@@ -8,7 +8,7 @@ import Copy from "../Copy/Copy";
 const ActionChip = ({action, setCurrentActionId}) => {
 
     const chipRef = useRef();
-    const {scroll, setScroll, actions, menuParamsHandler} = useConsole();
+    const {scroll, setScroll, actions, menuParamsHandler, copy} = useConsole();
     const [state, setState] = useState({});
 
     const scrollActions = (el, left) => {
@@ -65,7 +65,10 @@ const ActionChip = ({action, setCurrentActionId}) => {
                 <div className={classes.actionChip__click} onClick={chipHandler}>
                     <div className={`${classes.actionChip__status} ${error ? 'danger' : 'success'}`}/>
                     <div className={classes.actionChip__title}>{request.action}
-                        <Copy/>
+                        {
+                            copy &&
+                            <Copy/>
+                        }
                     </div>
 
                 </div>
