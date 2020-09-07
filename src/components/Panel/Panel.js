@@ -2,23 +2,24 @@ import React, {useEffect, useState} from 'react';
 import classes from './Panel.module.scss'
 
 
-const Panel = ({id, title, value, error, readOnly = false}) => {
+const Panel = ({id, title, value, error = false, format = false, readOnly = false}) => {
 
     const [state, setState] = useState(value)
 
     const inputHandler = (evt) => {
         setState(evt.target.value)
-    }
+    };
 
     useEffect(() => {
-        if (value) {
-            // setState(JSON.stringify(value, null, 2))
-            setState(JSON.stringify(value))
-        } else {
-            setState('')
-        }
+        const formatValue = (value) => {
+            if (value) {
+                return format ? JSON.stringify(value, null, 2) : JSON.stringify(value)
+            }
+            return ''
+        };
+        setState(formatValue(value));
 
-    }, [value]);
+    }, [value, format]);
 
 
     return (

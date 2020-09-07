@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect,  useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './ApiConsole.scss'
 import ApiConsoleHeader from "./ApiConsoleHeader";
 import Divider from "../../components/Divider/Divider";
@@ -15,16 +15,15 @@ const ApiConsole = ({actions, sendRequestError}) => {
     const [action, setAction] = useState({});
     // колбэк для определения текщего action
     const getAction = useCallback(() => {
-        if (currentActionId) {
+        if (currentActionId && actions.length) {
             sendRequestError(null);
             return actions.find(action => action.id === +currentActionId)
         }
         return {}
-    }, [currentActionId, actions]);
+    }, [currentActionId, actions, sendRequestError]);
 
 
     useEffect(() => {
-
         let currentAction = getAction();
         if (currentAction) {
             setAction(currentAction)
@@ -47,8 +46,7 @@ const ApiConsole = ({actions, sendRequestError}) => {
                 <Divider/>
                 <ApiConsoleHistory setCurrentActionId={setCurrentActionId} action={action}/>
                 <Divider/>
-                <ApiConsolePanels action={action}
-                />
+                <ApiConsolePanels action={action} id={currentActionId}/>
             </div>
         </ApiConsoleProvider>
     );
@@ -59,7 +57,7 @@ const mapState = (state) => {
         actions: state.apiConsole.actions,
     }
 }
-const actions ={
+const actions = {
     sendRequestError
 }
 

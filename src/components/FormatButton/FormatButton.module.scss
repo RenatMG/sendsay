@@ -1,0 +1,33 @@
+@import '../../scss/variables';
+@import '../../scss/colors';
+
+.FormatButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  @extend %transition;
+
+  &:active {
+    @extend %borderActive
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: $text-black;
+    margin-right: 10px;
+    @extend %transition;
+  }
+
+  &:hover {
+    color: $bg-blue;
+
+    svg {
+      stroke: $bg-blue;
+    }
+  }
+}

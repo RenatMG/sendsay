@@ -9,7 +9,7 @@ const DropDownMenu = ({action}) => {
 
     const {sendRequest} = useConsole();
 
-    const {menuParams, scroll, copy, doCopy} = useConsole();
+    const {menuParams, scroll, setScroll, setCopyElementId} = useConsole();
     let {id, top, left, width} = menuParams
 
     const [leftOffset, setLeftOffset] = useState(left)
@@ -62,16 +62,16 @@ const DropDownMenu = ({action}) => {
     }
 
     const actionDoHandler = () => {
-        console.log(action.request)
         sendRequest(JSON.stringify(action.request))
+        setScroll(true)
     };
 
     const actionCopyHandler = () => {
-        doCopy(true)
-        // setTimeout(() => {
-        //     doCopy(false)
-        // }, 3000)
-    // console.log(copy)
+        setCopyElementId(id)
+        setScroll(true)
+        setTimeout(() => {
+            setCopyElementId(null)
+        }, 2000)
     };
 
     return (

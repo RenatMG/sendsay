@@ -8,7 +8,7 @@ import Copy from "../Copy/Copy";
 const ActionChip = ({action, setCurrentActionId}) => {
 
     const chipRef = useRef();
-    const {scroll, setScroll, actions, menuParamsHandler, copy} = useConsole();
+    const {scroll, setScroll, actions, menuParamsHandler, copyElementId} = useConsole();
     const [state, setState] = useState({});
 
     const scrollActions = (el, left) => {
@@ -62,19 +62,23 @@ const ActionChip = ({action, setCurrentActionId}) => {
         <>
             {action &&
             <div ref={chipRef} id={id} className={classes.actionChip}>
-                <div className={classes.actionChip__click} onClick={chipHandler}>
-                    <div className={`${classes.actionChip__status} ${error ? 'danger' : 'success'}`}/>
-                    <div className={classes.actionChip__title}>{request.action}
-                        {
-                            copy &&
-                            <Copy/>
-                        }
+                <div className={classes.actionChip__copy}>
+                    <div className={classes.actionChip__click} onClick={chipHandler}>
+                        <div className={`${classes.actionChip__status} ${error ? 'danger' : 'success'}`}/>
+                        <div className={classes.actionChip__title}>
+                            {request.action || 'no-action-name'}
+                            {
+                                copyElementId === id &&
+                                <Copy/>
+                            }
+                        </div>
+                    </div>
+                    <div className={classes.actionChip__menu} onClick={setMenuParams}>
+                        <Menu/>
                     </div>
 
                 </div>
-                <div className={classes.actionChip__menu} onClick={setMenuParams}>
-                    <Menu/>
-                </div>
+
             </div>
             }
         </>

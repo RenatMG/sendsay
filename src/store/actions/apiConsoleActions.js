@@ -1,10 +1,10 @@
 import Cookies from "js-cookie";
 import Sendsay from "sendsay-api";
 import {
-    CLEAR_ERRORS,
+    CLEAR_ACTIONS,
     SEND_REQUEST_ERROR,
     SEND_REQUEST_START,
-    SEND_REQUEST_SUCCESS,
+    SEND_REQUEST_SUCCESS, SET_FORMAT,
 } from "./actions";
 
 export function sendRequest(value) {
@@ -24,7 +24,6 @@ export function sendRequest(value) {
                         dispatch(sendRequestSuccess(sendsay.requestNumber, request, response))
                     })
                     .catch((error) => {
-                        console.log(error)
                         dispatch(sendRequestSuccess(sendsay.requestNumber, request, error, true))
                     })
             }
@@ -64,4 +63,18 @@ export function sendRequestError(error) {
     }
 }
 
+export function clearActions() {
+    return {
+        type: CLEAR_ACTIONS
+    }
+}
+
+export function setFormat(id) {
+    return {
+        type: SET_FORMAT,
+        payload:{
+            id
+        }
+    }
+}
 

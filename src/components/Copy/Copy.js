@@ -1,19 +1,11 @@
 import React from 'react';
 import classes from './Copy.module.scss'
-import {Transition} from "react-transition-group";
 
-const Copy = ({open =true}) => {
+const Copy = () => {
     return (
-        <Transition in={open} timeout={200}>
-            {
-                state => {
-                     console.log(state)
-                   return(
-                       <div className={`${classes.Copy} ${state}`}>Скопировано</div>
-                   )
-                }
-            }
-        </Transition>
+
+        <div className={`${classes.Copy}`}><span className={classes.Copy__text}>Скопировано</span></div>
+
     );
 };
 

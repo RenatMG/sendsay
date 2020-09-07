@@ -11,16 +11,13 @@
   height: 32px;
 
   &:active {
-    border: 2px solid rgba(69, 165, 255, .5);
-    border-radius: 7px;
+   @extend %borderActive
   }
 
   svg {
     width: 20px;
     height: 20px;
-    //fill:  #0D0D0D;
-    stroke: #0D0D0D;
-
+    stroke: $text-black;
     @extend %transition;
   }
 

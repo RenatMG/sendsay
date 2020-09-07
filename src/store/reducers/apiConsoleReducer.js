@@ -1,4 +1,9 @@
-import {SEND_REQUEST_ERROR, SEND_REQUEST_START, SEND_REQUEST_SUCCESS, VALIDATE_REQUEST_ERROR} from "../actions/actions";
+import {
+    CLEAR_ACTIONS,
+    SEND_REQUEST_ERROR,
+    SEND_REQUEST_START,
+    SEND_REQUEST_SUCCESS, SET_FORMAT,
+} from "../actions/actions";
 
 const initialState = {
     actions: [
@@ -47,17 +52,17 @@ const initialState = {
     ],
     loading: false,
     error: null
-}
+};
 
 const apiConsoleReducer = (state = initialState, {type, payload}) => {
-    let actions = [...state.actions]
+    let actions = [...state.actions];
 
     switch (type) {
         case SEND_REQUEST_START:
             return {
                 ...state,
                 loading: true
-            }
+            };
         case SEND_REQUEST_SUCCESS:
             if (actions.length > 19) {
                 actions.pop()
@@ -67,13 +72,27 @@ const apiConsoleReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 loading: false,
                 actions
-            }
+            };
         case SEND_REQUEST_ERROR:
             return {
                 ...state,
                 loading: false,
                 error: payload.error
+            };
+        case CLEAR_ACTIONS:
+            return {
+                ...state,
+                actions: []
+            };
+        case  SET_FORMAT:
+            let action = actions.find(action => action.id === +payload.id);
+            if (action) {
+                action.format = !action.format;
             }
+            return {
+                ...state,
+                actions
+            };
         default:
             return {
                 ...state

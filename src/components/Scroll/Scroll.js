@@ -28,10 +28,24 @@ class Scroll extends React.Component {
         scrollActions.removeEventListener('wheel', this.doScroll, false);
     }
 
+    scrollToStart = () => {
+        const scrollActions = this.scrollRef.current
+        scrollActions.scrollTo({
+            left: 0,
+            behavior: "smooth"
+        });
+    }
+
     componentDidMount() {
         const scrollActions = this.scrollRef.current
         if (this.props.scroll) {
             scrollActions.addEventListener('mouseenter', this.initScroll);
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.children.length !== this.props.children.length) {
+            this.scrollToStart()
         }
     }
 
