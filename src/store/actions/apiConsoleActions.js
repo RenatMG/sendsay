@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import Sendsay from "sendsay-api";
 import {
-    CLEAR_ACTIONS,
+    CLEAR_ACTIONS, LOAD_HISTORY,
     SEND_REQUEST_ERROR,
     SEND_REQUEST_START,
     SEND_REQUEST_SUCCESS, SET_FORMAT,
@@ -78,3 +78,12 @@ export function setFormat(id) {
     }
 }
 
+export function loadHistory() {
+    const actions = localStorage.getItem('actions');
+    return{
+        type: LOAD_HISTORY,
+        payload:{
+            actions
+        }
+    }
+}

@@ -1,0 +1,25 @@
+@import "../../../../scss/colors";
+.clearHistory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  width: 50px;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);;
+  background-color: $bg-console;
+  height: 100%;
+  transition: .2s ease-in;
+  cursor: pointer;
+  &:after {
+    content: '';
+    display: block;
+    background: linear-gradient(269.93deg, #F6F6F6 0.06%, rgba(246, 246, 246, 0) 99.93%);
+    position: absolute;
+    left: -16px;
+    width: 15px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+}

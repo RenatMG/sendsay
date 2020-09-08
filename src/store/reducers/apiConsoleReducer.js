@@ -1,9 +1,10 @@
 import {
-    CLEAR_ACTIONS,
+    CLEAR_ACTIONS, LOAD_HISTORY,
     SEND_REQUEST_ERROR,
     SEND_REQUEST_START,
     SEND_REQUEST_SUCCESS, SET_FORMAT,
 } from "../actions/actions";
+import {isEqual} from "underscore";
 
 const initialState = {
     actions: [
@@ -24,7 +25,7 @@ const initialState = {
         {
             id: 6445434235435435,
             request: {
-                "action": "pong"
+                "action": "sys.settings.get"
             },
             response: {
                 "request.id": "loasdfghfgfsdfading",
@@ -38,7 +39,7 @@ const initialState = {
         {
             id: 644543543544545455,
             request: {
-                "action": "pong"
+                "action": "sys.settings.get1"
             },
             response: {
                 "request.id": "loasd354fsdfading",
@@ -64,10 +65,19 @@ const apiConsoleReducer = (state = initialState, {type, payload}) => {
                 loading: true
             };
         case SEND_REQUEST_SUCCESS:
-            if (actions.length > 19) {
-                actions.pop()
+            if (payload.request) {
+                let actionIdx = actions.findIndex(action => isEqual(action.request, payload.request));
+                if (actionIdx !== -1) {
+                    actions = [
+                        ...actions.slice(0, actionIdx),
+                        ...actions.slice(actionIdx + 1)
+                    ]
+                } else if (actions.length > 14) {
+                    actions.pop()
+                }
+                actions = [{...payload}, ...actions];
+                localStorage.setItem('actions', JSON.stringify(actions))
             }
-            actions = [{...payload}, ...actions];
             return {
                 ...state,
                 loading: false,
@@ -93,6 +103,22 @@ const apiConsoleReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 actions
             };
+        case LOAD_HISTORY:
+            let storeActions = payload.actions
+            try {
+                if (storeActions) {
+                    actions = JSON.parse(storeActions)
+                } else {
+                    actions = []
+                }
+            } catch (e) {
+                actions = []
+            }
+
+            return {
+                ...state,
+                actions
+            }
         default:
             return {
                 ...state

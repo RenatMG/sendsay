@@ -62,10 +62,10 @@ const authReducer = (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 [payload.loading]: true,
+                error: null,
                 isLogin: false
             }
         case LOGIN_ERROR:
-            console.log(payload)
             return {
                 ...state,
                 [payload.loading]: false,

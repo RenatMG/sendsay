@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import classes from './DragResizer.module.scss'
 import Menu from "../../svg/Menu";
 
-const DragResizer = () => {
+const DragResizer = ({startPoint}) => {
 
     const dragResizerRef = React.useRef();
 
@@ -38,6 +38,8 @@ const DragResizer = () => {
         }
 
         function stopDrag(e) {
+            localStorage.setItem('leftWidth', document.defaultView.getComputedStyle(leftPanel).width);
+            localStorage.setItem('rightWidth', document.defaultView.getComputedStyle(rightPanel).width);
             document.documentElement.removeEventListener('mousemove', doDrag, false);
             document.documentElement.removeEventListener('mouseup', stopDrag, false);
         }
@@ -45,7 +47,7 @@ const DragResizer = () => {
     });
 
     return (
-        <div className={classes.dragResizer} >
+        <div className={classes.dragResizer}>
             <div id='dragResizer' ref={dragResizerRef}>
                 <Menu/>
             </div>

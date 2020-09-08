@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import classes from './Panel.module.scss'
 
 
-const Panel = ({id, title, value, error = false, format = false, readOnly = false}) => {
+const Panel = ({id, title, value, error = false, format = false, readOnly = false, minWidth = 'auto'}) => {
 
-    const [state, setState] = useState(value)
+    const [state, setState] = useState(value);
 
     const inputHandler = (evt) => {
         setState(evt.target.value)
@@ -17,13 +17,23 @@ const Panel = ({id, title, value, error = false, format = false, readOnly = fals
             }
             return ''
         };
-        setState(formatValue(value));
+
+        try {
+            setState(formatValue(value));
+            // setLocalError(false)
+        } catch (e) {
+            // setLocalError(true)
+        }
 
     }, [value, format]);
 
 
+    // console.log(state)
+    // console.log(value)
+
+
     return (
-        <div className={`${classes.panel} ${error ? classes.error : ''}`}>
+        <div className={`${classes.panel} ${error ? classes.error : ''}`} style={{minWidth}}>
             <div className={classes.title}>{title}</div>
             <div className={classes.body}>
                 <textarea

@@ -1,50 +1,39 @@
-import React, {Component,} from 'react';
-import {Redirect, Route, Switch} from "react-router-dom";
+import React, {useEffect} from 'react';
+import {Redirect} from "react-router-dom";
 
 import './App.scss';
-import AuthForm from "./containers/Auth/Auth";
-import ApiConsole from "./containers/ApiConsole/ApiConsole";
 import {connect} from "react-redux";
 import {autoLogin} from "./store/actions/authActions";
+import Routes from "./routes";
 
 
-class App extends Component {
+const App = ({isLogin, autoLogin, autoLoginLoading}) => {
 
-    componentDidMount() {
-        if (!this.props.isLogin) {
-            this.props.autoLogin()
+    useEffect(() => {
+        if (!isLogin) {
+            autoLogin()
         }
-    }
+    }, [isLogin, autoLogin]);
 
-    render() {
-        const {isLogin, autoLoginLoading} = this.props
+    return (
+        <>
+            {
+                !autoLoginLoading &&
+                <>
+                    <Routes/>
+                    {
+                        isLogin
+                            ?
+                            <Redirect to='/console'/>
+                            :
+                            <Redirect to='/'/>
+                    }
+                </>
+            }
+        </>
+    );
 
-        return (
-            <>
-                {
-                    autoLoginLoading
-                        ?
-                        null
-                        :
-                        <>
-                            <Switch>
-                                <Route path='/' exact component={AuthForm}/>
-                                <Route path='/console' component={ApiConsole}/>
-                            </Switch>
-                            {
-                                isLogin
-                                    ?
-                                    <Redirect to='/console'/>
-                                    :
-                                    <Redirect to='/'/>
-                            }
-                        </>
-                }
-
-            </>
-        );
-    }
-}
+};
 
 const mapState = (state) => {
 

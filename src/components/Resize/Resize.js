@@ -5,7 +5,7 @@ import ResizeOut from "../../svg/ResizeOut";
 
 const Resize = () => {
 
-    const [fullScreen, setFullScreen] = useState(false)
+    const [fullScreen, setFullScreen] = useState(false);
 
     const resize = () => {
         if (!fullScreen) {

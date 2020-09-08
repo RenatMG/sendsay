@@ -28,13 +28,13 @@ class Scroll extends React.Component {
         scrollActions.removeEventListener('wheel', this.doScroll, false);
     }
 
-    scrollToStart = () => {
-        const scrollActions = this.scrollRef.current
-        scrollActions.scrollTo({
-            left: 0,
-            behavior: "smooth"
-        });
-    }
+    // scrollToStart = () => {
+    //     const scrollActions = this.scrollRef.current
+    //     scrollActions.scrollTo({
+    //         left: 0,
+    //         behavior: "smooth"
+    //     });
+    // }
 
     componentDidMount() {
         const scrollActions = this.scrollRef.current
@@ -43,11 +43,6 @@ class Scroll extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.children.length !== this.props.children.length) {
-            this.scrollToStart()
-        }
-    }
 
     scrollRef = React.createRef()
 

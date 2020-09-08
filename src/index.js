@@ -21,7 +21,7 @@ const composeEnhancers =
 export const store = createStore(
     rootReducer,
     composeEnhancers(applyMiddleware(reduxThunk))
-)
+);
 
 
 
@@ -32,7 +32,7 @@ const application = (
             <App/>
         </BrowserRouter>
     </Provider>
-)
+);
 
 ReactDOM.render(application, rootElement)
 

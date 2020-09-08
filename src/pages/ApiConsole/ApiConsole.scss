@@ -1,0 +1,82 @@
+@import "../../scss/colors";
+
+.api-console {
+  min-width: 1330px;
+
+  &__panels {
+    padding: 15px;
+  }
+
+  &-chip {
+    position: relative;
+    height: 30px;
+    box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: #fff;
+    margin: auto 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+    pointer-events: visible;
+
+    &:hover {
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &__status {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      margin: 0 5px 0 10px;
+    }
+
+    &__title {
+      display: flex;
+      align-items: center;
+      transform: translateX(1px);
+      user-select: none;
+      max-height: 100%;
+      padding-bottom: 5px;
+      min-width: fit-content;
+      white-space: nowrap;
+    }
+
+    &__menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+
+      svg {
+        fill: rgba(0, 0, 0, .2);
+        transition: .2s ease-in;
+      }
+
+      &:hover {
+        svg {
+          fill: #999999;
+        }
+      }
+    }
+
+    &__click {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      //min-width: 110px;
+    }
+
+    &__copy {
+      display: flex;
+      height: 100%;
+      padding: 5px 0;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+    }
+  }
+
+}
+
+
