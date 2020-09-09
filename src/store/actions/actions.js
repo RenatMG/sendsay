@@ -10,5 +10,7 @@ export const SEND_REQUEST_ERROR = 'SEND_REQUEST_ERROR';
 export const CLEAR_ACTIONS = 'CLEAR_ACTIONS';
 export const SET_FORMAT = 'SET_FORMAT';
 export const LOAD_HISTORY = 'LOAD_HISTORY';
+export const DELETE_ACTION = 'DELETE_ACTION';
+export const SET_EDIT = 'SET_EDIT';
 
 

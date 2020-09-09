@@ -42,7 +42,7 @@ function loginStart(autoLogin = false) {
 }
 
 function loginError(error, autoLogin = false) {
-    console.log(error)
+    // console.log(error)
     return {
         type: LOGIN_ERROR,
         payload: {

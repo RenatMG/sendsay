@@ -1,46 +1,101 @@
-import React from 'react';
-import {Panel, Button, DragResizer, Divider} from "../../../components";
+import React, {useEffect, useState} from 'react';
+import {Button, DragResizer, Divider} from "../../../components";
 import FormatButton from "./FormatButton/FormatButton";
-import {useConnect} from "../context/ApiConsoleConnect";
 import {useConsole} from "../context/ApiConsoleContext";
+import {connect} from "react-redux";
+import {sendRequest, sendRequestError, setEdit, setFormat} from "../../../store/actions/apiConsoleActions";
+import Panel from "./Panel/Panel";
 
-const ApiConsolePanels = () => {
+const ApiConsolePanels = ({loading, error, actions, lastRequest, sendRequest, setFormat, setEdit, sendRequestError}) => {
 
-    const {apiConsole: {loading, error}, sendRequest} = useConnect();
-    const {action} = useConsole();
+    const {currentActionId, setCurrentActionId, scrollActions} = useConsole();
+    const [request, setRequest] = useState('');
+    const [response, setResponse] = useState('');
+    const [responseError, setResponseError] = useState(false);
+
 
     const submitHandler = (evt) => {
         evt.preventDefault();
-        sendRequest(evt.target.request.value);
+        const chips = document.getElementById('scrollActions');
+        if (chips.scrollLeft > 0) {
+            scrollActions(chips, 0);
+        }
+        try {
+            let request = JSON.parse(evt.target.request.value);
+            sendRequest(request);
+            setFormat(false);
+            setEdit(false);
+            setCurrentActionId(null);
+        } catch (e) {
+            const {name, message} = e;
+            console.log('Request error: ', e.message);
+            sendRequestError({name, message});
+        }
+
+
     };
     let leftWidth = localStorage.getItem('leftWidth');
     let rightWidth = localStorage.getItem('rightWidth');
+
+    useEffect(() => {
+        let action = null;
+        const requestId = currentActionId || lastRequest;
+        if (actions && actions.length) {
+            action = actions.find(action => action.id === +requestId);
+        }
+        if (action) {
+            setRequest(action.request);
+            setResponse(action.response);
+            setResponseError(action.error);
+        } else {
+            setRequest('');
+            setResponse('');
+            setResponseError(false);
+        }
+
+    }, [lastRequest, currentActionId, actions]);
+
 
     return (
         <form onSubmit={submitHandler} className="api-console__panels">
             <div className="d-flex">
                 <Panel id='request'
                        title='Запрос'
-                       value={action.request || ''}
-                       format={action.format}
+                       value={request}
                        minWidth={leftWidth}
                        error={error}/>
                 <DragResizer/>
                 <Panel id='response'
                        title='Ответ'
-                       value={action.response || ''}
-                       format={true}
-                       error={action.error}
+                       value={response}
+                       error={responseError}
                        minWidth={rightWidth}
                        readOnly/>
             </div>
             <Divider marginY={15} marginX={-15}/>
             <div className='d-flex justify-content-between'>
                 <Button title='Отправить' loading={loading}/>
-                <FormatButton/>
+                <FormatButton
+                    setFormat={setFormat}
+                />
             </div>
         </form>
     );
 };
+const mapState = state => {
 
-export default ApiConsolePanels;
+    return {
+        loading: state.apiConsole.loading,
+        error: state.apiConsole.error,
+        actions: state.apiConsole.actions,
+        lastRequest: state.apiConsole.lastRequest,
+    }
+};
+const actions = {
+    sendRequest,
+    setFormat,
+    setEdit,
+    sendRequestError
+};
+
+export default connect(mapState, actions)(ApiConsolePanels);

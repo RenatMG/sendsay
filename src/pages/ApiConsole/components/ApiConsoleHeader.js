@@ -27,6 +27,6 @@ const ApiConsoleHeader = ({logOut}) => {
 };
 const actions = {
     logOut
-}
+};
 
 export default connect(false, actions)(ApiConsoleHeader);

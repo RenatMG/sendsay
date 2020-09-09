@@ -1,19 +1,33 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './ApiConsole.scss'
 
-import ApiConsoleMain from "./components/ApiConsoleMain";
 import ApiConsoleContextProvider from "./context/ApiConsoleContext";
-import ApiConsoleConnectProvider from "./context/ApiConsoleConnect";
+import ApiConsoleHeader from "./components/ApiConsoleHeader";
+import {Divider} from "../../components";
+import ApiConsoleHistory from "./components/ApiConsoleHistory";
+import ApiConsolePanels from "./components/ApiConsolePanels";
+import {connect} from "react-redux";
+import {loadHistory} from "../../store/actions/apiConsoleActions";
 
 
-const ApiConsole = () => {
+const ApiConsole = ({loadHistory}) => {
+    useEffect(() => {
+        loadHistory();
+    }, [loadHistory]);
     return (
-        <ApiConsoleConnectProvider>
-            <ApiConsoleContextProvider>
-                <ApiConsoleMain/>
-            </ApiConsoleContextProvider>
-        </ApiConsoleConnectProvider>
+        <ApiConsoleContextProvider>
+            <div className='api-console'>
+                <ApiConsoleHeader/>
+                <Divider/>
+                <ApiConsoleHistory/>
+                <Divider/>
+                <ApiConsolePanels/>
+            </div>
+        </ApiConsoleContextProvider>
     );
 };
+const actions = {
+    loadHistory
+};
+export default connect(false, actions)(ApiConsole);
 
-export default ApiConsole;

@@ -1,4 +1,6 @@
 @import "../../../../scss/colors";
+@import "../../../../scss/variables";
+
 .clearHistory {
   display: flex;
   align-items: center;
@@ -9,8 +11,10 @@
   border-left: 1px solid rgba(0, 0, 0, 0.2);;
   background-color: $bg-console;
   height: 100%;
-  transition: .2s ease-in;
-  cursor: pointer;
+  //transition: .2s ease-in;
+  //cursor: pointer;
+  z-index: 2;
+
   &:after {
     content: '';
     display: block;
@@ -22,4 +26,31 @@
     pointer-events: none;
     z-index: 2;
   }
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+
+    &:active {
+      @extend %borderActive
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      stroke: $text-black;
+      @extend %transition;
+    }
+
+    &:hover {
+      svg {
+        stroke: $bg-blue;
+      }
+    }
+  }
+
 }

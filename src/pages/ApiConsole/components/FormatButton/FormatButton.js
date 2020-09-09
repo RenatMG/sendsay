@@ -2,15 +2,9 @@ import React from 'react';
 import classes from './FormatButton.module.scss'
 import AlignRight from "../../../../svg/AlignRight";
 
-import {useConnect} from "../../context/ApiConsoleConnect";
-import {useConsole} from "../../context/ApiConsoleContext";
-
-
-const FormatButton = () => {
-    const {currentActionId} = useConsole();
-    const {setFormat} = useConnect();
+const FormatButton = ({setFormat}) => {
     return (
-        <div className={classes.FormatButton} onClick={() => setFormat(currentActionId)}>
+        <div className={classes.FormatButton} onClick={()=>setFormat(true)}>
             <AlignRight/>
             <span>Форматировать</span>
         </div>

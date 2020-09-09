@@ -1,15 +1,31 @@
 import React from 'react';
 import classes from './ClearHistory.module.scss'
 import Clear from "../../../../svg/Clear";
-import {useConnect} from "../../context/ApiConsoleConnect";
+import {useConsole} from "../../context/ApiConsoleContext";
+import {connect} from "react-redux";
+import {clearActions, setEdit} from "../../../../store/actions/apiConsoleActions";
 
-const ClearHistory = () => {
-    const {clearActions} = useConnect();
+const ClearHistory = ({clearActions, setEdit}) => {
+    const {setCurrentActionId} = useConsole();
+
+    const clearHandler = () => {
+        clearActions();
+        setEdit(false)
+        setCurrentActionId(null);
+    }
+
     return (
-        <div className={classes.clearHistory} onClick={clearActions}>
-           <Clear/>
+        <div className={classes.clearHistory} onClick={clearHandler}>
+            <div>
+                <Clear/>
+            </div>
         </div>
     );
 };
 
-export default ClearHistory;
+const actions = {
+    clearActions,
+    setEdit
+};
+
+export default connect(false, actions)(ClearHistory);

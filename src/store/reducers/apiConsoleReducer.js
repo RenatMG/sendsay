@@ -1,8 +1,8 @@
 import {
-    CLEAR_ACTIONS, LOAD_HISTORY,
+    CLEAR_ACTIONS, DELETE_ACTION, LOAD_HISTORY,
     SEND_REQUEST_ERROR,
     SEND_REQUEST_START,
-    SEND_REQUEST_SUCCESS, SET_FORMAT,
+    SEND_REQUEST_SUCCESS, SET_EDIT, SET_FORMAT,
 } from "../actions/actions";
 import {isEqual} from "underscore";
 
@@ -51,18 +51,23 @@ const initialState = {
             },
         },
     ],
+    lastRequest: null,
+    format: false,
+    edit: false,
     loading: false,
     error: null
 };
 
 const apiConsoleReducer = (state = initialState, {type, payload}) => {
     let actions = [...state.actions];
+    let lastRequest = state.lastRequest
 
     switch (type) {
         case SEND_REQUEST_START:
             return {
                 ...state,
-                loading: true
+                loading: true,
+                error: null
             };
         case SEND_REQUEST_SUCCESS:
             if (payload.request) {
@@ -77,11 +82,13 @@ const apiConsoleReducer = (state = initialState, {type, payload}) => {
                 }
                 actions = [{...payload}, ...actions];
                 localStorage.setItem('actions', JSON.stringify(actions))
+                lastRequest = payload.id
             }
             return {
                 ...state,
                 loading: false,
-                actions
+                actions,
+                lastRequest
             };
         case SEND_REQUEST_ERROR:
             return {
@@ -89,19 +96,28 @@ const apiConsoleReducer = (state = initialState, {type, payload}) => {
                 loading: false,
                 error: payload.error
             };
+        case DELETE_ACTION:
+            actions = actions.filter(action => action.id !== payload.id);
+            localStorage.setItem('actions', JSON.stringify(actions));
+            return {
+                ...state,
+                actions
+            };
         case CLEAR_ACTIONS:
+            localStorage.removeItem('actions');
             return {
                 ...state,
                 actions: []
             };
         case  SET_FORMAT:
-            let action = actions.find(action => action.id === +payload.id);
-            if (action) {
-                action.format = !action.format;
-            }
             return {
                 ...state,
-                actions
+                format: payload.format
+            };
+        case SET_EDIT:
+            return {
+                ...state,
+                edit: payload.edit
             };
         case LOAD_HISTORY:
             let storeActions = payload.actions
@@ -114,11 +130,10 @@ const apiConsoleReducer = (state = initialState, {type, payload}) => {
             } catch (e) {
                 actions = []
             }
-
             return {
                 ...state,
                 actions
-            }
+            };
         default:
             return {
                 ...state

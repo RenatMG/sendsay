@@ -7,28 +7,22 @@ import DropDownMenu from "./DropDownMenu/DropDownMenu";
 import Overlay from "./Overlay/Overlay";
 
 import {useConsole} from "../context/ApiConsoleContext";
-import {useConnect} from "../context/ApiConsoleConnect";
+import {connect} from "react-redux";
 
-
-const ApiConsoleHistory = () => {
+const ApiConsoleHistory = ({actions}) => {
 
     const {scroll} = useConsole();
-    const {apiConsole:{actions}} = useConnect();
 
     return (
         <Header>
             <Scroll scroll={scroll}>
-
                 {
                     actions.map(action => {
                         return (
-                            <ApiConsoleChip key={action.id}
-                                        action={action}
-                            />
+                            <ApiConsoleChip key={action.id} action={action}/>
                         )
                     })
                 }
-
             </Scroll>
             <DropDownMenu/>
             <ClearHistory/>
@@ -38,5 +32,11 @@ const ApiConsoleHistory = () => {
 
 };
 
-export default ApiConsoleHistory;
+const mapState = state => {
+    return {
+        actions: state.apiConsole.actions
+    }
+};
+
+export default connect(mapState)(ApiConsoleHistory);
 

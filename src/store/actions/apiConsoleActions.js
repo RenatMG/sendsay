@@ -1,17 +1,16 @@
 import Cookies from "js-cookie";
 import Sendsay from "sendsay-api";
 import {
-    CLEAR_ACTIONS, LOAD_HISTORY,
+    CLEAR_ACTIONS, DELETE_ACTION, LOAD_HISTORY,
     SEND_REQUEST_ERROR,
     SEND_REQUEST_START,
-    SEND_REQUEST_SUCCESS, SET_FORMAT,
+    SEND_REQUEST_SUCCESS, SET_EDIT, SET_FORMAT,
 } from "./actions";
 
-export function sendRequest(value) {
+export function sendRequest(request) {
     return dispatch => {
 
         try {
-            let request = JSON.parse(value)
             const session = Cookies.get('sendsay_session');
             if (session) {
                 dispatch(sendRequestStart());
@@ -69,21 +68,39 @@ export function clearActions() {
     }
 }
 
-export function setFormat(id) {
+export function setFormat(format) {
     return {
         type: SET_FORMAT,
-        payload:{
-            id
+        payload: {
+            format
+        }
+    }
+}
+
+export function setEdit(edit) {
+    return {
+        type: SET_EDIT,
+        payload: {
+            edit
         }
     }
 }
 
 export function loadHistory() {
     const actions = localStorage.getItem('actions');
-    return{
+    return {
         type: LOAD_HISTORY,
-        payload:{
+        payload: {
             actions
+        }
+    }
+}
+
+export function deleteAction(id) {
+    return {
+        type: DELETE_ACTION,
+        payload: {
+            id
         }
     }
 }
