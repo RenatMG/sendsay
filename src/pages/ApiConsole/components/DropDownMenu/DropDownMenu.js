@@ -21,16 +21,15 @@ const DropDownMenu = ({actions, sendRequest, deleteAction, setEdit, sendRequestE
 
 
     useEffect(() => {
+        const menuWidth = 133;
         // Вычисляем расстояние слева от экрана до меню
         const chips = document.getElementById('scrollActions');
-        if (width + left > window.innerWidth - 50) {
-            setLeftOffset(left - width - (133 - width) + 1);
-        } else if (left < 25) {
+        if (left < 25) {
             let offset = chips.scrollLeft + left - 20;
             scrollActions(chips, offset);
             setLeftOffset(20);
         } else {
-            setLeftOffset(left - (133 - width));
+            setLeftOffset(left - (menuWidth - width));
         }
 
     }, [left, width, scrollActions]);

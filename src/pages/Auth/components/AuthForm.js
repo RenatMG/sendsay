@@ -69,7 +69,7 @@ const AuthForm = ({formControls, login, loading, error}) => {
             {
                 error && <AuthFormError error={error}/>
             }
-            <form onSubmit={formSubmitHandler} ref={formRef}>
+            <form onSubmit={formSubmitHandler} ref={formRef} autoComplete={'on'}>
                 {
                     Object.keys(controls).map(property => {
                         return (

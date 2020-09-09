@@ -5,7 +5,7 @@ import {useConsole} from "../context/ApiConsoleContext";
 import {connect} from "react-redux";
 import {sendRequestError, setEdit, setFormat} from "../../../store/actions/apiConsoleActions";
 
-const ApiConsoleChip = ({action, sendRequestError, setFormat, setEdit}) => {
+const ApiConsoleChip = ({actions, action, sendRequestError, setFormat, setEdit}) => {
 
     const chipRef = useRef();
     const {scroll, setScroll, menuParamsHandler, copyElementId, setCurrentActionId, scrollActions} = useConsole();
@@ -13,7 +13,6 @@ const ApiConsoleChip = ({action, sendRequestError, setFormat, setEdit}) => {
 
     const chipHandler = () => {
         const {left, width} = state;
-        console.log(state)
         const chip = chipRef.current;
         if (width + left > window.innerWidth - 50) {
             scrollActions(chip.parentElement, chip.parentElement.scrollLeft - ((window.innerWidth - 55) - (width + left)))
@@ -42,26 +41,37 @@ const ApiConsoleChip = ({action, sendRequestError, setFormat, setEdit}) => {
     };
 
 
-    const setMenuParams = () => {
+    const setMenuParams = async () => {
         const chip = chipRef.current;
+        const {left, width} = state;
         if (chip) {
-            setCurrentActionId(chip.id);
-            setFormat(false);
-            setEdit(false);
-            sendRequestError(null);
-            menuParamsHandler(setParamsHandler());
+            if (width + left > window.innerWidth - 50) {
+                await scrollActions(chip.parentElement, chip.parentElement.scrollLeft - ((window.innerWidth - 55) - (width + left)))
+            } else {
+                setCurrentActionId(chip.id);
+                setFormat(false);
+                setEdit(false);
+                sendRequestError(null);
+                menuParamsHandler(setParamsHandler());
+            }
         }
+
     };
 
+    const setParamsOnScroll = () => {
+        const chip = chipRef.current;
+        const {top, left, width} = chip.getBoundingClientRect();
+        setState({top, left, width, id: +chip.id});
+    };
 
     useEffect(() => {
-        const setParamsOnScroll = () => {
-            const {top, left, width} = chip.getBoundingClientRect();
-            setState({top, left, width, id: +chip.id});
-            // console.log({top, left, width, id: +chip.id})
-        };
+        setParamsOnScroll();
+    }, [actions, scroll]);
+
+    useEffect(() => {
+
         const chip = chipRef.current;
-      //  const chipParent = chip.parentElement;
+        //  const chipParent = chip.parentElement;
         if (chip) {
             setParamsOnScroll();
             chip.parentElement.addEventListener('scroll', setParamsOnScroll)
@@ -101,6 +111,11 @@ const ApiConsoleChip = ({action, sendRequestError, setFormat, setEdit}) => {
         </>
     );
 
+};
+const mapState = state => {
+    return {
+        actions: state.apiConsole.actions
+    }
 }
 const actions = {
     sendRequestError,
@@ -108,5 +123,5 @@ const actions = {
     setEdit
 }
 
-export default connect(false, actions)(ApiConsoleChip);
+export default connect(mapState, actions)(ApiConsoleChip);
 

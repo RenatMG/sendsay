@@ -41,10 +41,10 @@ const mapState = (state) => {
         isLogin: state.auth.isLogin,
         autoLoginLoading: state.auth.autoLoginLoading
     }
-}
+};
 
 const actions = {
     autoLogin
-}
+};
 
 export default connect(mapState, actions)(App);
