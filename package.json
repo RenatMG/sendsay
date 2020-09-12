@@ -9,7 +9,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.2",
     "cuid": "^2.1.8",
-    "firebase-tools": "^8.10.0",
+    "firebase": "^7.20.0",
     "js-cookie": "^2.2.1",
     "node-sass": "^4.14.1",
     "qs": "^6.9.4",
