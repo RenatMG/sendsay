@@ -1,6 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Тестовое задание 
+на вакансию react разработчик
+https://astrakhan.hh.ru/vacancy/38121091?query=Sendsay
+
+Деплой: https://sendsay-e8c88.web.app/
+
+
+
 
 In the project directory, you can run:
 
