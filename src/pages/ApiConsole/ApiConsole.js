@@ -11,7 +11,6 @@ import {Transition} from "react-transition-group";
 import Rules from "../../features/Rules/Rules";
 import Page from "../../layouts/Page/Page";
 
-
 const ApiConsole = ({loadHistory}) => {
 
     const [open, setOpen] = useState(false);

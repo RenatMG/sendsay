@@ -1,3 +1,4 @@
+
 .dropDownMenu_entering {
   animation-name: slideInDown;
   animation-duration: .5s;
@@ -8,7 +9,6 @@
     animation: fadeIn .3s ease-in;
   }
 }
-
 .dropDownMenu_entered {
   visibility: visible !important;
 
@@ -16,7 +16,6 @@
     opacity: 1;
   }
 }
-
 .dropDownMenu_exiting {
   animation-name: slideInUp;
   animation-duration: .3s;

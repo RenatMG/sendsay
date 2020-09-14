@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {sendRequestError, setEdit, setFormat} from "../../../../store/actions/apiConsoleActions";
 import {formatValue} from "../../../../services/jsonHandlers";
 
+
 const Panel = ({id, title, value, error = false, readOnly = false, minWidth = 'auto', format, edit, setEdit, setFormat, sendRequestError}) => {
 
     const [state, setState] = useState(value);

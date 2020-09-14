@@ -7,7 +7,6 @@
   margin: 20px 0;
   color: #999999;
   @extend %transition;
-
   &:hover {
     cursor: pointer;
     color: $text-black

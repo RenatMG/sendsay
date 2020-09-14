@@ -4,8 +4,7 @@ import classes from './Loader.module.scss'
 const Loader = () => {
     return (
         <div className={classes.loader}>
-            <svg
-                 width="28px" height="28px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <svg width="28px" height="28px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                 <g transform="rotate(0 50 50)">
                     <rect x="46" y="5" rx="4" ry="7.5" width="8" height="30" fill="#ffffff">
                         <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.875s"

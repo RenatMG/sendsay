@@ -8,5 +8,4 @@ const Header = ({children}) => {
         </div>
     );
 };
-
 export default Header;

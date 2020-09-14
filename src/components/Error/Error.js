@@ -13,5 +13,4 @@ const Error = ({error: {id, explain}}) => {
         </div>
     );
 };
-
 export default Error;

@@ -9,7 +9,6 @@ body {
 .drag{
   cursor: grab;
   position: relative;
-
   &:active {
     cursor: grabbing;
   }

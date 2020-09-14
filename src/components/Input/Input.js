@@ -6,7 +6,6 @@ const Input = ({control, inputHandler}) => {
 
     return (
         <div className={`${classes.Input} ${error ? classes.Input__error : ''}`}>
-
             {
                 label &&
                 <div className={classes.Input__label}>

@@ -1,16 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import classes from './DragResizer.module.scss'
 import Menu from "../../svg/Menu";
 
-const DragResizer = ({startPoint}) => {
+const DragResizer = () => {
 
-    const dragResizerRef = React.useRef();
+    const dragResizerRef = useRef();
 
     useEffect(() => {
 
         let startX, parentWidth, startWidth, panelsContainerWidth;
         const dragResizer = dragResizerRef.current
-
         dragResizer.addEventListener('mousedown', initDrag, false);
 
         const parent = dragResizer.parentElement;

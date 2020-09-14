@@ -1,12 +1,10 @@
 import React, {useEffect} from 'react';
 import {Redirect} from "react-router-dom";
-
 import './App.scss';
 import {connect} from "react-redux";
 import {autoLogin} from "./store/actions/authActions";
 import Routes from "./routes";
 
-// !
 const App = ({isLogin, autoLogin, autoLoginLoading}) => {
 
     useEffect(() => {

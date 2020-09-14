@@ -1,5 +1,4 @@
 import React from 'react';
-
 const ResizeOut = () => {
     return (
         <svg viewBox="0 0 20 20" fill="none">
