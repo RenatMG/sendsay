@@ -6,6 +6,7 @@ import Checked from "../../svg/Checked";
 import Plus from "../../svg/Plus";
 import {getRulesData, setRulesData} from "../../store/actions/firebaseActions";
 
+
 const Rules = (props) => {
 
     const {transition, onClickHandler, getRulesData, setRulesData, title, type, list, loading, tasks, git} = props;

@@ -5,6 +5,7 @@ import {useConsole} from "../../context/ApiConsoleContext";
 import {connect} from "react-redux";
 import {clearActions, setEdit} from "../../../../store/actions/apiConsoleActions";
 
+
 const ClearHistory = ({clearActions, setEdit}) => {
     const {setCurrentActionId} = useConsole();
 

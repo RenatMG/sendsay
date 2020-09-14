@@ -15,5 +15,4 @@ const Button = ({loading = false, title, disabled = false}) => {
         </button>
     );
 };
-
 export default Button;

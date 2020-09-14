@@ -10,7 +10,6 @@
   cursor: pointer;
   user-select: none;
   @extend %transition;
-
   &:active {
     @extend %borderActive
   }

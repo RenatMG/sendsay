@@ -1,5 +1,5 @@
 import {FB_CONNECT_ERROR, FB_CONNECT_START, FB_CONNECT_SUCCESS} from "../actions/actions";
-
+//
 const initialState = {
     rules: {
         authFormRules: {},

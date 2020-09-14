@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Dots = () => {
     return (
         <svg className='mx-2' width="3" height="9" viewBox="0 0 3 9" fill="none">

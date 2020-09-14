@@ -1,5 +1,4 @@
 import React from 'react';
-
 const AlignRight = () => {
     return (
         <svg viewBox="0 0 24 24" >

@@ -5,7 +5,7 @@ import {
     SEND_REQUEST_SUCCESS, SET_EDIT, SET_FORMAT,
 } from "../actions/actions";
 import {isEqual} from "underscore";
-
+//
 const initialState = {
     actions: [
         {

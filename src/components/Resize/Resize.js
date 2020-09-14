@@ -15,7 +15,6 @@ const Resize = () => {
             document.exitFullscreen();
             setFullScreen(false)
         }
-
     }
 
     return (

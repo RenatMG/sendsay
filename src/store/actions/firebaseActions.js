@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 import {FB_CONNECT_ERROR, FB_CONNECT_START, FB_CONNECT_SUCCESS} from "./actions";
-
+//
 export function getRulesData(type) {
 
     return dispatch => {

@@ -11,5 +11,4 @@ const Decor = () => {
         </div>
     );
 };
-
 export default Decor;

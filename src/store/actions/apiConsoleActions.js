@@ -6,7 +6,7 @@ import {
     SEND_REQUEST_START,
     SEND_REQUEST_SUCCESS, SET_EDIT, SET_FORMAT,
 } from "./actions";
-
+//
 export function sendRequest(request) {
     return dispatch => {
 

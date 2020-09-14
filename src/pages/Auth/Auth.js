@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 import './Auth.scss';
 import {Decor, GitLink} from '../../components';

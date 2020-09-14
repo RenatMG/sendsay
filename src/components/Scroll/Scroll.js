@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Scroll.module.scss'
 
+
 class Scroll extends React.Component {
 
     initScroll = () => {

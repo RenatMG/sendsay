@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Menu = () => {
     return (
         <svg width="4" height="18" viewBox="0 0 4 18">

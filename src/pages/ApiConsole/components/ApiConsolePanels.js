@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {sendRequest, sendRequestError, setEdit, setFormat} from "../../../store/actions/apiConsoleActions";
 import Panel from "./Panel/Panel";
 
+
 const ApiConsolePanels = ({loading, error, actions, lastRequest, sendRequest, setFormat, setEdit, sendRequestError, setOpen}) => {
 
     const {currentActionId, setCurrentActionId, scrollActions} = useConsole();

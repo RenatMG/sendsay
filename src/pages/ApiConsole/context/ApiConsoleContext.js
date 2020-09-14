@@ -1,5 +1,4 @@
 import React, {createContext, useContext, useState} from 'react';
-
 export const ApiConsoleContext = createContext();
 export const useConsole = () => {
     return useContext(ApiConsoleContext)

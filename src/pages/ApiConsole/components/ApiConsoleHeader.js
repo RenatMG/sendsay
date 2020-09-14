@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {logOut} from "../../../store/actions/authActions";
 import Cookies from "js-cookie";
 
-
 const ApiConsoleHeader = ({logOut}) => {
 
     const account = Cookies.get('sendsay_account');

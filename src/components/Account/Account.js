@@ -14,7 +14,6 @@ const Account = ({account, sublogin}) => {
                     {sublogin}
                 </div>
             }
-
         </div>
     );
 };

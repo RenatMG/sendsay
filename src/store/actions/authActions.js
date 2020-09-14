@@ -1,7 +1,7 @@
 import {LOGIN_ERROR, LOGIN_START, LOGIN_SUCCESS, USER_LOGOUT} from "./actions";
 import Sendsay from 'sendsay-api';
 import Cookies from 'js-cookie'
-
+//
 export function login(formData) {
     return (dispatch) => {
         dispatch(loginStart())

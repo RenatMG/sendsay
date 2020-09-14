@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Plus = () => {
     return (
         <svg               x="0px" y="0px"

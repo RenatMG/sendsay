@@ -8,5 +8,4 @@ const GitLink = ({onClickHandler, title}) => {
         </div>
     );
 };
-
 export default GitLink;

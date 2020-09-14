@@ -2,6 +2,7 @@ export const validator = (value, validation) => {
     if (!validation) {
         return false
     }
+    // валидаторы
     if (validation.required) {
         if (!value || value === '') {
             return 'required'

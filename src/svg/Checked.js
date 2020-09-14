@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Checked = () => {
     return (
         <svg height="20" viewBox="0 -65 434.67733 434" width="20" >

@@ -2,12 +2,10 @@ import React, {useEffect, useState} from 'react';
 import classes from './DropDownMenu.module.scss';
 import {Divider} from "../../../../components";
 import {Transition} from "react-transition-group";
-
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import {useConsole} from "../../context/ApiConsoleContext";
 import {connect} from "react-redux";
 import {deleteAction, sendRequest, sendRequestError, setEdit} from "../../../../store/actions/apiConsoleActions";
-
 
 const DropDownMenu = ({actions, sendRequest, deleteAction, setEdit, sendRequestError}) => {
 
