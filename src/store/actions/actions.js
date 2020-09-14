@@ -13,4 +13,7 @@ export const LOAD_HISTORY = 'LOAD_HISTORY';
 export const DELETE_ACTION = 'DELETE_ACTION';
 export const SET_EDIT = 'SET_EDIT';
 
+export const FB_CONNECT_START = 'FB_CONNECT_START';
+export const FB_CONNECT_SUCCESS = 'FB_CONNECT_SUCCESS';
+export const FB_CONNECT_ERROR = 'FB_CONNECT_ERROR';
 

@@ -8,9 +8,11 @@ import Account from './Account/Account'
 import Resize from './Resize/Resize'
 import Header from './Header/Header'
 import Scroll from './Scroll/Scroll'
-
 import DragResizer from './DragResizer/DragResizer'
+import GitLink from './GitLink/GitLink'
 import Copy from './Copy/Copy'
+import Input from './Input/Input'
+import Error from './Error/Error'
 
 
 export {
@@ -25,5 +27,8 @@ export {
     Header,
     Scroll,
     DragResizer,
-    Copy
+    Copy,
+    GitLink,
+    Input,
+    Error
 }

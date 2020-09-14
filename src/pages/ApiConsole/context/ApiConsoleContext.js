@@ -1,6 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 
-export const ApiConsoleContext = React.createContext();
+export const ApiConsoleContext = createContext();
 export const useConsole = () => {
     return useContext(ApiConsoleContext)
 };
@@ -11,7 +11,6 @@ const ApiConsoleContextProvider = props => {
     const [menuParams, setMenuParams] = useState({});
     const [copyElementId, setCopyElementId] = useState(null);
     const [currentActionId, setCurrentActionId] = useState(null);
-
 
     const menuParamsHandler = (params) => {
         setScroll(((menuParams.left === params.left) || menuParams.left < 1) && !scroll);// если то же чип - toggle

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Button, DragResizer, Divider} from "../../../components";
+import {Button, DragResizer, Divider, GitLink} from "../../../components";
 import FormatButton from "./FormatButton/FormatButton";
 import {useConsole} from "../context/ApiConsoleContext";
 import {connect} from "react-redux";
 import {sendRequest, sendRequestError, setEdit, setFormat} from "../../../store/actions/apiConsoleActions";
 import Panel from "./Panel/Panel";
 
-const ApiConsolePanels = ({loading, error, actions, lastRequest, sendRequest, setFormat, setEdit, sendRequestError}) => {
+const ApiConsolePanels = ({loading, error, actions, lastRequest, sendRequest, setFormat, setEdit, sendRequestError, setOpen}) => {
 
     const {currentActionId, setCurrentActionId, scrollActions} = useConsole();
     const [request, setRequest] = useState('');
@@ -57,6 +57,7 @@ const ApiConsolePanels = ({loading, error, actions, lastRequest, sendRequest, se
 
 
     return (
+
         <form onSubmit={submitHandler} className="api-console__panels">
             <div className="d-flex">
                 <Panel id='request'
@@ -75,11 +76,16 @@ const ApiConsolePanels = ({loading, error, actions, lastRequest, sendRequest, se
             <Divider marginY={15} marginX={-15}/>
             <div className='d-flex justify-content-between'>
                 <Button title='Отправить' loading={loading}/>
+                <GitLink
+                    title='@link-to-your-github'
+                    onClickHandler={setOpen}
+                />
                 <FormatButton
                     setFormat={setFormat}
                 />
             </div>
         </form>
+
     );
 };
 const mapState = state => {

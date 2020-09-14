@@ -1,38 +1,40 @@
 import React, {useState} from 'react';
 import './Auth.scss';
-import {Decor} from '../../components';
+import {Decor, GitLink} from '../../components';
 import AuthForm from "./components/AuthForm";
-import AuthFormGitLink from "./components/AuthFormGitLink";
+import Rules from "../../features/Rules/Rules";
 import {Transition} from "react-transition-group";
-import AuthFormGitInfo from "./components/AuthFormGitInfo";
-
+import Page from "../../layouts/Page/Page";
 
 const Auth = () => {
-    const [gitLink, setGitLink] = useState(false);
-    // exited
-    // entering
-    // entered
-    // exiting
+    const [open, setOpen] = useState(false);
+    const title = 'Форма авторизации';
     return (
-        <Transition in={gitLink} timeout={0}>
-            {
-                state => {
-                    return (
-
-                        <div className={`auth ${state}`}>
-                            <div className={'auth-main'}>
-                                <Decor/>
-                                < AuthForm/>
-                                < AuthFormGitLink
-                                    setGitLink={setGitLink}
-                                />
+        <Page title={title}>
+            <Transition in={open} timeout={0}>
+                {
+                    state => {
+                        return (
+                            <div className={`auth ${state}`}>
+                                <div className={'auth-main'}>
+                                    <Decor/>
+                                    <AuthForm/>
+                                    <GitLink
+                                        title='@link-to-your-github'
+                                        onClickHandler={setOpen}
+                                    />
+                                </div>
+                                <Rules
+                                    transition={state}
+                                    onClickHandler={setOpen}
+                                    title={title}
+                                    type='authForm'/>
                             </div>
-                            <AuthFormGitInfo setGitLink={setGitLink}/>
-                        </div>
-                    )
+                        )
+                    }
                 }
-            }
-        </Transition>
+            </Transition>
+        </Page>
     );
 };
 

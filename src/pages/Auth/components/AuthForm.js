@@ -1,10 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {connect} from "react-redux";
-
-import AuthFormInput from "./AuthFormInput";
-import AuthFormError from "./AuthFormError";
-
-import {Title, Button} from "../../../components"
+import {Title, Button, Input, Error} from "../../../components"
 import {validator} from "../../../services/formHandlers";
 import {login} from "../../../store/actions/authActions";
 
@@ -67,15 +63,15 @@ const AuthForm = ({formControls, login, loading, error}) => {
         <div className="auth-form">
             <Title size='lg'>API-консолька</Title>
             {
-                error && <AuthFormError error={error}/>
+                error && <Error error={error}/>
             }
             <form onSubmit={formSubmitHandler} ref={formRef} autoComplete={'on'}>
                 {
                     Object.keys(controls).map(property => {
                         return (
-                            <AuthFormInput key={property}
-                                           inputHandler={inputHandler}
-                                           control={controls[property]}/>
+                            <Input key={property}
+                                   inputHandler={inputHandler}
+                                   control={controls[property]}/>
                         )
                     })
                 }
@@ -98,3 +94,4 @@ const actions = {
 };
 
 export default connect(mapState, actions)(AuthForm);
+

@@ -16,6 +16,7 @@
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
     "react-horizontal-scrolling-menu": "^0.7.7",
     "react-json-editor-ajrm": "^2.5.9",
     "react-redux": "^7.2.1",

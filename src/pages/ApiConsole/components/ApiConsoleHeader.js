@@ -1,6 +1,5 @@
 import React from 'react';
 import {Decor, LogOut, Account, Title, Header, Resize} from "../../../components";
-
 import {connect} from "react-redux";
 import {logOut} from "../../../store/actions/authActions";
 import Cookies from "js-cookie";

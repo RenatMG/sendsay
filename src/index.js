@@ -11,7 +11,7 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import rootReducer from './store/reducers/rootReducer';
 import reduxThunk from 'redux-thunk';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 
 const fireBaseConfig={
     apiKey: "AIzaSyC1i4ncLn_Sjy28CWgPUWMpQqgtFHxbzx0",

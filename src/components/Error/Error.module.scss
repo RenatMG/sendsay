@@ -1,0 +1,27 @@
+@import "../../scss/colors";
+.Error {
+  background-color: $bg-error;
+  padding: 15px 12px;
+  margin-top: 20px;
+  border-radius: 5px;
+  display: flex;
+
+  &__description {
+    margin-left: 10px;
+  }
+
+  &__head {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: $danger;
+
+  }
+
+  &__body {
+    font-size: 12px;
+    color: $danger;
+    opacity: .5;
+    margin-top: 5px;
+  }
+}

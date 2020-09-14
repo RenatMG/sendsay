@@ -2,7 +2,12 @@
 
 .api-console {
   min-width: 1330px;
-
+  transition: .5s ease-in-out;
+  transform: translateY(0);
+  min-height: 100vh;
+  &.entered {
+    transform: translateY(-100vh);
+  }
   &__panels {
     padding: 15px;
   }

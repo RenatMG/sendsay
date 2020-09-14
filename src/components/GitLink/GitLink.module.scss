@@ -1,0 +1,16 @@
+@import "../../scss/colors";
+@import "../../scss/variables";
+.GitLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  color: #999999;
+  @extend %transition;
+
+  &:hover {
+    cursor: pointer;
+    color: $text-black
+  }
+}
+
