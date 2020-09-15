@@ -37,7 +37,7 @@ const initialState = {
         password: {
             id: 'password',
             label: 'Пароль',
-            type: 'text',
+            type: 'password',
             value: '',
             valid: true,
             error: false,
