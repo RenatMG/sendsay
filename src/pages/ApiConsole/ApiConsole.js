@@ -31,7 +31,7 @@ const ApiConsole = ({loadHistory}) => {
                             return (
                                 <>
                                     <div className={`api-console ${state}`}>
-                                        <ApiConsoleHeader/>
+                                        <ApiConsoleHeader title={title}/>
                                         <Divider/>
                                         <ApiConsoleHistory/>
                                         <Divider/>
@@ -40,7 +40,7 @@ const ApiConsole = ({loadHistory}) => {
                                     <Rules
                                         transition={state}
                                         onClickHandler={setOpen}
-                                        title='API-консолька'
+                                        title={title}
                                         type='apiConsole'/>
                                 </>
                             )
